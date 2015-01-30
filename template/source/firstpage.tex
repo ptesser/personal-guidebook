@@ -1,0 +1,55 @@
+% =================================================================================================
+% File:			firstpage.tex
+% Description:	Defiinisce i contenuti obbligatori della prima pagina
+% Created:		2015-01-29
+% Author:		Tesser Paolo
+% Email:		p.tesser921@gmail.com
+% =================================================================================================
+% Modification History:
+% Version		Modifier Date		Change											Author
+% 0.0.1 		2015-01-29 			Prima emissione 								Tesser Paolo
+% =================================================================================================
+%
+
+% DEFINIZIONE DELLA PRIMA PAGINA
+
+\thispagestyle{empty}
+\setlength{\topmargin}{70pt}
+% NOME DELLA GUIDA
+\begin{center}
+	\Large \textbf{NOME DELLA GUIDA}
+\end{center}
+
+% SE SI VUOLE ANCHE IL LOGO (DA AGGIUNGERE NEW COMMAND CON L'INCLUDE DINAMICO)
+\begin{comment}
+	\begin{figure}[!t]
+		\centering
+		\includegraphics[width=10cm]{../template/images/logo/zing.pdf}
+	\end{figure}
+\end{comment}
+
+
+% Informazioni del documento
+\begin{center}
+\vspace{1.5cm}
+	\textbf{\Large Informazioni Documento} \\[1pt]
+	\begin{longtable}{|l|p{180pt}|}
+		\hline
+		\textbf{Nome documento} & \documentName \\
+		\hline
+		\textbf{Versione} & \documentVersion \\
+		\hline
+		\textbf{Data redazione} & \documentDate \\
+		\hline
+		\textbf{Redattori} & \parbox[t]{\textwidth}{\documentEditors} \\
+		\hline
+		% \textbf{Verificatori} & \parbox{\textwidth}{\documentVerifiers} \\ & \\
+		% \textbf{Approvazione} & \parbox{\textwidth}{\documentApprovers} \\ & \\
+		% \textbf{Lista distribuzione} & \parbox{\textwidth}{\documentDistributionList} \\ & \\
+		\textbf{Uso} & \parbox{\textwidth}{\documentUsage} \\
+		\hline
+	\end{longtable}
+	\vspace{20pt}
+		\textbf{\Large Sommario} \\
+		\documentSummary
+\end{center}
