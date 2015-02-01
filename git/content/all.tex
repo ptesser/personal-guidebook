@@ -1,0 +1,168 @@
+% =================================================================================================
+% File:			all.tex
+% Description:	Defiinisce la sezione relativa a ...
+% Created:		2015-01-29
+% Author:		Tesser Paolo
+% Email:		p.tesser921@gmail.com
+% =================================================================================================
+% Modification History:
+% Version		Modifier Date		Change											Author
+% 0.0.1 		2015-01-29 			iniziata stesura documento di prova				Tesser Paolo
+% =================================================================================================
+%
+
+% CONTENUTO DEL CAPITOLO
+
+\section{Introduzione} % (fold)
+\label{sec:introduzione}
+Git è un sistema di controllo di versione distribuito. \\
+\textbf{Distribuito} (DVCS) significa che ogni componente, del gruppo di lavoro, possiede una copia locale completa del repository. \\
+
+\noindent
+\textbf{Vantaggi}:
+	\begin{itemize}
+		\item operazioni di commit più veloci da effettuare;
+		\item si riesce a lavorare offline;
+		\item ognuno ha in locale un backup del repository.
+	\end{itemize}
+	
+\begin{comment}
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.5]{images/proc_assegnazione_task.pdf}
+		\caption{Diagramma di attività - procedura d'assegnazione di un task}
+		\label{fig:procedura_assegnazione_task}
+	\end{figure}
+\end{comment}
+
+
+	\subsection{Informativi} % (fold)
+	\label{sub:informativi}
+		\begin{itemize}
+			\item \textbf{CodeSchool}: \url{www.codeschool.com};
+			\item \textbf{CERN - Best Practice}: PDF;
+		\end{itemize}
+	% subsection informativi (end)
+
+% section introduzione (end)
+
+\newpage \clearpage
+\section{Impostare git} % (fold)
+\label{sec:impostare_git}
+La prima volta che si installa git è buona pratica impostare da subito alcune credenziali. \\
+Da linea di comando eseguire i seguenti comandi:
+	\begin{verbatim}
+	path: git config --global user.name "Nome Cognome"
+	path: git config --global user.email mail@mail.com
+	path: git config --global color.ui true
+	\end{verbatim}
+
+% section impostare_git (end)
+
+\newpage \clearpage
+\section{Creare un repository} % (fold)
+\label{sec:creare_un_repository}
+Un repository può essere creato in locale e usato solo nel computer dell'utente, anche se questo non permetterà un lavoro collaborativo, oppure, dopo la creazione in locale, può essere associato ad un repository creato su un server (o attraverso un servizio di hosting). \\
+Per creare un repository su un servizio di hosting basta seguire le istruzione che il sito propone.
+	\subsection{Creazione in locale} % (fold)
+	\label{sub:creazione_in_locale}
+	Di seguito viene illustrata la sequenza di comandi che dovranno essere eseguiti:
+		\begin{verbatim}
+		path: mkdir nome_repo
+		path: cd nome_repo
+		path: git init
+		\end{verbatim}
+	\noindent
+	L'ultima istruzione creerà tutti i metadati necessari al repository. Verranno salvati nella cartella nascosta:
+		\begin{center}
+			nome\_repo/.git/
+		\end{center}
+
+	% subsection creazione_in_locale (end)
+	
+% section creare_un_repository (end)
+
+\newpage \clearpage
+\section{Lavorare sul repository} % (fold)
+\label{sec:lavorare_sul_repository}
+
+	\subsection{Lavorare in locale} % (fold)
+	\label{sub:lavorare_in_locale}
+	Le tre azioni che vengono più spesso eseguite quando si lavora in locale sono:
+		\begin{itemize}
+			\item creare un file;
+			\item aggiungerlo alla \textbf{staging area} attraverso il comando:
+				\begin{verbatim}
+				path: git add nome_del_file.ext
+				\end{verbatim}
+				\noindent
+				Se si vogliono aggiungere più file contemporaneamente o solo alcuni, possiamo eseguire in esclusione questi comandi:
+				\begin{verbatim}
+				path: git add --all # aggiunge tutti i file presenti nella unstaging area
+				path: git add <list of file>
+				path: git add *.ext
+				path: git add dir/
+				\end{verbatim}
+				
+			\item committare i cambiamenti attraverso il comando:
+				\begin{verbatim}
+				path: git commit -m "msg"
+				\end{verbatim}
+				\noindent
+				Quest'ultima operazione può essere effettuata anche senza l'opzione -m, in tal caso la procedura seguirà lo schema illustrato nella sezione TO DO;
+		\end{itemize}
+	\noindent
+	Per osservare i cambiamenti avvenuti dall'ultima operazione di commit basta lanciare il comando:
+		\begin{verbatim}
+		path: git status
+		\end{verbatim}
+	
+		\subsubsection{Visualizzare le differenze} % (fold)
+		\label{ssub:visualizzare_le_differenze}
+		Per osservare le differenze apportate tra un file e la sua precedente versione:
+			\begin{verbatim}
+			path: git diff nome_del_file
+			# oppure
+			path: git diff --staged nome_del_file
+			# per osservare le modifiche su i file già inseriti nella staging area
+			\end{verbatim}
+
+		% subsubsection visualizzare_le_differenze (end)
+		
+		\subsubsection{Rimuovere i file dalla staging area} % (fold)
+		\label{ssub:rimuovere_i_file_dalla_staging_area}
+		Per rimuovere dei file aggiunti nella staging area, tramite il comando \textbf{git add}, bisogna lanciare il seguente comando:
+			\begin{verbatim}
+			path: git reset HEAD # per rimuovere tutti i file
+			path: git reset HEAD nome_del_file # per rimuovere solo quello specificato
+			\end{verbatim}
+		\noindent
+		Per annullare l'ultimo commit dobbiamo eseguire il seguente comando:
+			\begin{verbatim}
+			path: git reset --soft HEAD^
+			\end{verbatim}
+		\noindent
+		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area. \\
+		La direttiva \textbf{HEAD^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \\
+		\textbf{NotaQuesto}: comandi non annulla le modifiche effettuate ai file.
+		
+		% subsubsection rimuovere_i_file_dalla_staging_area (end)
+		
+		\subsubsection{Annullare i cambiamenti} % (fold)
+		\label{ssub:annullare_i_cambiamenti}
+		Per riportare i file che si sono modificati, ma non ancora committati, allo stato dell'ultimo commit, bisogna eseguire il seguente comando:
+			\begin{verbatim}
+			path: git checkout -- nome_del_file
+			\end{verbatim}
+		% subsubsection annullare_i_cambiamenti (end)
+	
+	% subsection lavorare_in_locale (end)
+	
+	\subsection{Lavorare in remoto} % (fold)
+	\label{sub:lavorare_in_remoto}
+	
+	% subsection lavorare_in_remoto (end)
+% section lavorare_sul_repository (end)
+
+\newpage \clearpage
+
