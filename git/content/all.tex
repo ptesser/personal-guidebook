@@ -9,7 +9,12 @@
 % Version		Modifier Date		Change											Author
 % 0.0.1 		2015-01-29 			iniziata stesura documento di prova				Tesser Paolo
 % =================================================================================================
+% 0.0.2			2015-02-02			aggiunta img + migliorata sez. configurazioni	Tesser Paolo
+% =================================================================================================
+% 0.0.3			2015-02-02			aggiunta sezione per i workflow, da stendere	Tesser Paolo
+% =================================================================================================
 %
+
 
 % CONTENUTO DEL CAPITOLO
 
@@ -25,15 +30,16 @@ Git è un sistema di controllo di versione distribuito. \\
 		\item si riesce a lavorare offline;
 		\item ognuno ha in locale un backup del repository.
 	\end{itemize}
-	
-\begin{comment}
+	\noindent
+	\\
+La seguente immagine serve per dare un idea generale di come git lavori e tramite quali operazioni di base. Viene mostrato inoltre il rapporto tra la gestione in locale del repository con quello in remoto. Il dettaglio delle operazioni sarà illustrato prevalentemente nella sezione \ref{sec:lavorare_sul_repository}.
+
 	\begin{figure}[htbp]
 		\centering
-		\includegraphics[scale=0.5]{images/proc_assegnazione_task.pdf}
-		\caption{Diagramma di attività - procedura d'assegnazione di un task}
-		\label{fig:procedura_assegnazione_task}
+		\includegraphics[scale=1.1]{images/git_local_remote.png}
+		\caption{Git - Locale e Remoto}
+		\label{fig:git_locale_e_remoto}
 	\end{figure}
-\end{comment}
 
 
 	\subsection{Informativi} % (fold)
@@ -50,11 +56,28 @@ Git è un sistema di controllo di versione distribuito. \\
 \section{Impostare git} % (fold)
 \label{sec:impostare_git}
 La prima volta che si installa git è buona pratica impostare da subito alcune credenziali. \\
-Da linea di comando eseguire i seguenti comandi:
+Queste credenziali possono essere impostate su diversi livelli:
+	\begin{itemize}
+		\item \textbf{global}: valide quindi per tutti i repository dell'utente. Si trovano nella cartella:
+			\begin{center}
+				~/.gitconfig
+			\end{center}
+		\item \textbf{system}: valide per tutti i repository del computer. Si trovano nella cartella:
+			\begin{center}
+				/etc/gitconfig
+			\end{center}
+		\item \textbf{local}: valide solo per il repository dal quale vengono impostate. Si trovano nella cartella:
+			\begin{center}
+				.git/config
+			\end{center}
+	\end{itemize}
+Da linea di comando eseguire i seguenti comandi, cambiando l'opzione ``global'' a seconda delle esigenze:
 	\begin{verbatim}
 	path: git config --global user.name "Nome Cognome"
 	path: git config --global user.email mail@mail.com
 	path: git config --global color.ui true
+	path: git config --global core.editor emacs
+	path: git config --global commit.template ~/.gitmessage.txt
 	\end{verbatim}
 
 % section impostare_git (end)
@@ -97,19 +120,28 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				\end{verbatim}
 				\noindent
 				Se si vogliono aggiungere più file contemporaneamente o solo alcuni, possiamo eseguire in esclusione questi comandi:
-				\begin{verbatim}
-				path: git add --all # aggiunge tutti i file presenti nella unstaging area
-				path: git add <list of file>
-				path: git add *.ext
-				path: git add dir/
-				\end{verbatim}
-				
+					\begin{verbatim}
+					path: git add --all # aggiunge tutti i file presenti nella unstaging area
+					path: git add <list of file>
+					path: git add *.ext
+					path: git add dir/
+					\end{verbatim}
+				\noindent
+				\textbf{Buona pratica}, come verrà illustrato di seguito, vuole che i commit siano il più possibile atomici. \'E \textbf{consigliato fortemente} quindi eseguire il comando:
+					\begin{verbatim}
+					path: git add --patch (o -p)
+					\end{verbatim}
+				\noindent
+				Questo comando permettere di revisionare il codice che si sta aggiungendo, con la possibilità di scartarne delle parti;
+
 			\item committare i cambiamenti attraverso il comando:
 				\begin{verbatim}
 				path: git commit -m "msg"
 				\end{verbatim}
 				\noindent
-				Quest'ultima operazione può essere effettuata anche senza l'opzione -m, in tal caso la procedura seguirà lo schema illustrato nella sezione TO DO;
+				Quest'ultima operazione può essere effettuata anche senza l'opzione -m, in tal caso la procedura seguirà lo schema illustrato nella sezione TO DO; \\
+				Importante e \textbf{obbligatorio} è effettuare commit atomici in quanto se qualcosa andasse storto, per colpa di qualche inserimento sbagliato, sarebbe più facile effettuare una ricerca dell'errore. Inoltre, questa metodologia, permette di dare una descrizione più efficace sul messaggio di cosa si sta facendo e soprattutto meno prolissa in quanto vado ad aggiungere meno cose contemporaneamente.
+				 
 		\end{itemize}
 	\noindent
 	Per osservare i cambiamenti avvenuti dall'ultima operazione di commit basta lanciare il comando:
@@ -143,7 +175,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			\end{verbatim}
 		\noindent
 		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area. \\
-		La direttiva \textbf{HEAD^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \\
+		La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \\
 		\textbf{NotaQuesto}: comandi non annulla le modifiche effettuate ai file.
 		
 		% subsubsection rimuovere_i_file_dalla_staging_area (end)
@@ -165,4 +197,10 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 % section lavorare_sul_repository (end)
 
 \newpage \clearpage
+\section{Workflow} % (fold)
+\label{sec:workflow}
 
+% section workflow (end)
+
+
+\newpage \clearpage
