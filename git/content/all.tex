@@ -54,7 +54,7 @@ La seguente immagine serve per dare un idea generale di come git lavori e tramit
 
 \newpage \clearpage
 \section{Riferimenti} % (fold)
-\label{sec:terminologia}
+\label{sec:riferimenti}
 Di seguito viene spiegato attraverso quali nomi git si riferisce a determinati stati del versionamento. \\ \\
 
 \textbf{Riferimenti specifici}:
@@ -68,13 +68,15 @@ Di seguito viene spiegato attraverso quali nomi git si riferisce a determinati s
 	\end{itemize}
 	\noindent
 \textbf{Riferimenti relativi}:
+\begin{comment}
 	\begin{itemize}
-		\item il commit precedente: ref~1 oppure ref^;
-		\item il penultimo commit: ref~2 oppure ref^^;
-		\item genitori differenti: ref^1. (TO LEARN)
+		\item il commit precedente: ref\textasciitilde1 oppure ref^;
+		\item il penultimo commit: ref\textasciitilde2 oppure ref^^;
+		\item genitori differenti: ref^1. (TO LEARN).
 	\end{itemize}
+\end{comment}
 
-% section terminologia (end)
+% section riferimenti (end)
 
 
 \newpage \clearpage
@@ -179,7 +181,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 	
 		\subsubsection{Visualizzare le differenze} % (fold)
 		\label{ssub:visualizzare_le_differenze}
-		Per osservare le differenze di un file in relazione a dove si trova	:
+		Per osservare le differenze di un file in relazione a dove si trova:
 			\begin{verbatim}
 			# per osservare le modifiche sui file non ancora inseriti nella staging area con quelli presenti su Index
 			path: git diff nome_del_file
@@ -199,17 +201,27 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			path: git reset HEAD nome_del_file # per rimuovere solo quello specificato
 			\end{verbatim}
 		\noindent
-		Le variabili HEAD e Index vengono portate indietro di un passo.
+		La variabile Index viene portata indietro di un passo. \\ \\
 		Per annullare l'ultimo commit dobbiamo eseguire il seguente comando:
 			\begin{verbatim}
 			path: git reset --soft HEAD^
 			\end{verbatim}
 		\noindent
-		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area. \\
+		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area, quindi puntati dalla variabile Index. \\
 		La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \\
-		\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file.
+		La variabile HEAD viene portata indietro di un passo. \\
+		\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file. \\
+
+		Per rimuovere l'ultimo commit dobbiamo eseguire il seguente comando:
+			\begin{verbatim}
+			path: git reset --hard HEAD^
+			\end{verbatim}
+		\noindent
+		Le variabili HEAD, Index e Working Tree vengono portate indietro di un passo. \\
+		Questo comando è potenzialmente dannoso perché rischi di farti perdere il lavoro presente nella Working Tree. \'E bene quindi utilizzarlo solo quando il comando \textbf{git status} dia un output pulito. \\
+		Non bisogna inoltre usare questo comando quando il commit è stato pushato in un repository pubblico, perché altri sviluppatori potrebbero fare riferimento ad un istanza che verrebbe rimossa.
 		
-		% subsubsection rimuovere_i_file_dalla_staging_area (end)
+ 		% subsubsection rimuovere_i_file_dalla_staging_area (end)
 		
 		\subsubsection{Annullare i cambiamenti} % (fold)
 		\label{ssub:annullare_i_cambiamenti}
@@ -218,13 +230,67 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			path: git checkout -- nome_del_file
 			\end{verbatim}
 		% subsubsection annullare_i_cambiamenti (end)
-	
+
+		\subsubsection{Ripristinare precedenti versioni} % (fold)
+		\label{ssub:ripristinare_precedenti_versioni}
+		TO DO
+		% subsubsection ripristinare_precedenti_versioni (end)
+
+
+		\subsubsection{Branch} % (fold)
+		\label{ssub:branch}
+		A differenza di altri sistemi di versionamento, in git un branch è semplicemente un puntatore a un commit. \\
+		Le operazioni di branching sono elencate di seguito:
+			\begin{itemize}
+				\item creare un branch:
+					\begin{verbatim}
+					path: git branch nome_del_branch [punto di partenza]
+					\end{verbatim}
+				\item cancellare un branch:
+					\begin{verbatim}
+					path: git branch -d|-D nome_del_branch
+					\end{verbatim}
+				\item muoversi tra i diversi branch:
+					\begin{verbatim}
+					path: git checkout nome_del_branch_dove_spostarsi
+					\end{verbatim}
+				Questo comando può essere eseguito solo quando non ci sono file ancora da committare;
+				\item creare e spostarsi nel branch appena generato:
+					\begin{verbatim}
+					path: git checkout -b nome_del_branch
+					\end{verbatim}
+				\item rinominare un branch:
+					\begin{verbatim}
+					path: git branch -m nome_del_branch_vecchio nome_del_branch_nuovo
+					\end{verbatim}
+			\end{itemize}
+			\noindent
+		TO DO
+		% subsubsection branch (end)
+
+
+		\subsubsection{Tag} % (fold)
+		\label{ssub:tag}
+		TO DO
+		% subsubsection tag (end)
+		
 	% subsection lavorare_in_locale (end)
 	
 	\subsection{Lavorare in remoto} % (fold)
 	\label{sub:lavorare_in_remoto}
-	
+	TO DO
+		\subsubsection{Pubblicare un branch} % (fold)
+		\label{ssub:pubblicare_un_branch}
+		TO DO
+		% subsubsection pubblicare_un_branch (end)
+
+		\subsubsection{Pubblicare un tag} % (fold)
+		\label{ssub:pubblicare_un_tag}
+		TO DO
+		% subsubsection pubblicare_un_tag (end)
+
 	% subsection lavorare_in_remoto (end)
+
 % section lavorare_sul_repository (end)
 
 \newpage \clearpage
