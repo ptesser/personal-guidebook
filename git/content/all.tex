@@ -53,20 +53,45 @@ La seguente immagine serve per dare un idea generale di come git lavori e tramit
 % section introduzione (end)
 
 \newpage \clearpage
+\section{Riferimenti} % (fold)
+\label{sec:terminologia}
+Di seguito viene spiegato attraverso quali nomi git si riferisce a determinati stati del versionamento. \\ \\
+
+\textbf{Riferimenti specifici}:
+	\begin{itemize}
+		\item \textbf{Working Tree}: è l'insieme di file su cui si sta lavorando non ancora aggiunti alla staging area (vedi sezione \ref{sub:lavorare_in_locale});
+		\item \textbf{Index}: è il riferimento ai file pronti per essere committati, quelli aggiunti alla staging area;
+		\item \textbf{HEAD}: è il riferimento all'ultimo commit effettuato;
+		\item \textbf{d3a7c852d2c789f791b11091894cc71387e562e9}: un valore hash attribuito ad ogni commit;
+		\item \textbf{master, feature-eg}: il nome esatto di un branch per riferirsi ad esso;
+		\item \textbf{v1.0.0}: il nome di un tag per riferirsi ad esso.
+	\end{itemize}
+	\noindent
+\textbf{Riferimenti relativi}:
+	\begin{itemize}
+		\item il commit precedente: ref~1 oppure ref^;
+		\item il penultimo commit: ref~2 oppure ref^^;
+		\item genitori differenti: ref^1. (TO LEARN)
+	\end{itemize}
+
+% section terminologia (end)
+
+
+\newpage \clearpage
 \section{Impostare git} % (fold)
 \label{sec:impostare_git}
 La prima volta che si installa git è buona pratica impostare da subito alcune credenziali. \\
 Queste credenziali possono essere impostate su diversi livelli:
 	\begin{itemize}
-		\item \textbf{global}: valide quindi per tutti i repository dell'utente. Si trovano nella cartella:
+		\item \textbf{global}: valide quindi per tutti i repository dell'utente. Si trovano nel file:
 			\begin{center}
 				~/.gitconfig
 			\end{center}
-		\item \textbf{system}: valide per tutti i repository del computer. Si trovano nella cartella:
+		\item \textbf{system}: valide per tutti i repository del computer. Si trovano nel file:
 			\begin{center}
 				/etc/gitconfig
 			\end{center}
-		\item \textbf{local}: valide solo per il repository dal quale vengono impostate. Si trovano nella cartella:
+		\item \textbf{local}: valide solo per il repository dal quale vengono impostate. Si trovano nel file:
 			\begin{center}
 				.git/config
 			\end{center}
@@ -119,6 +144,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				path: git add nome_del_file.ext
 				\end{verbatim}
 				\noindent
+				La staging area è il luogo dove sono presenti i file pronti per essere committati.
 				Se si vogliono aggiungere più file contemporaneamente o solo alcuni, possiamo eseguire in esclusione questi comandi:
 					\begin{verbatim}
 					path: git add --all # aggiunge tutti i file presenti nella unstaging area
@@ -140,7 +166,8 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				\end{verbatim}
 				\noindent
 				Quest'ultima operazione può essere effettuata anche senza l'opzione -m, in tal caso la procedura seguirà lo schema illustrato nella sezione TO DO; \\
-				Importante e \textbf{obbligatorio} è effettuare commit atomici in quanto se qualcosa andasse storto, per colpa di qualche inserimento sbagliato, sarebbe più facile effettuare una ricerca dell'errore. Inoltre, questa metodologia, permette di dare una descrizione più efficace sul messaggio di cosa si sta facendo e soprattutto meno prolissa in quanto vado ad aggiungere meno cose contemporaneamente.
+				Importante e \textbf{obbligatorio} è effettuare commit atomici in quanto se qualcosa andasse storto, per colpa di qualche inserimento sbagliato, sarebbe più facile effettuare una ricerca dell'errore. Inoltre, questa metodologia, permette di dare una descrizione più efficace sul messaggio di cosa si sta facendo e soprattutto meno prolissa in quanto vado ad aggiungere meno cose contemporaneamente. \\
+				Il messaggio che viene inserito deve essere di facile interpretazione. Non bisogna scrivere cose generiche o superflue.
 				 
 		\end{itemize}
 	\noindent
@@ -148,15 +175,18 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\begin{verbatim}
 		path: git status
 		\end{verbatim}
+
 	
 		\subsubsection{Visualizzare le differenze} % (fold)
 		\label{ssub:visualizzare_le_differenze}
-		Per osservare le differenze apportate tra un file e la sua precedente versione:
+		Per osservare le differenze di un file in relazione a dove si trova	:
 			\begin{verbatim}
+			# per osservare le modifiche sui file non ancora inseriti nella staging area con quelli presenti su Index
 			path: git diff nome_del_file
-			# oppure
+			# per osservare le modifiche sui file già inseriti nella staging area con quelli presenti su HEAD
 			path: git diff --staged nome_del_file
-			# per osservare le modifiche su i file già inseriti nella staging area
+			# per osservare le modifiche sui file nella staging area rispetto a quelli su HEAD
+			path: git diff HEAD
 			\end{verbatim}
 
 		% subsubsection visualizzare_le_differenze (end)
@@ -169,6 +199,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			path: git reset HEAD nome_del_file # per rimuovere solo quello specificato
 			\end{verbatim}
 		\noindent
+		Le variabili HEAD e Index vengono portate indietro di un passo.
 		Per annullare l'ultimo commit dobbiamo eseguire il seguente comando:
 			\begin{verbatim}
 			path: git reset --soft HEAD^
@@ -176,7 +207,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\noindent
 		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area. \\
 		La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \\
-		\textbf{NotaQuesto}: comandi non annulla le modifiche effettuate ai file.
+		\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file.
 		
 		% subsubsection rimuovere_i_file_dalla_staging_area (end)
 		
@@ -197,9 +228,32 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 % section lavorare_sul_repository (end)
 
 \newpage \clearpage
+\section{Git Hooks} % (fold)
+\label{sec:git_hooks}
+TO DO
+
+
+% section git_hooks (end)
+
+
+
+
+\newpage \clearpage
 \section{Workflow} % (fold)
 \label{sec:workflow}
-
+In questa sezione vengono illustrati alcuni modelli di sviluppo che si possono adottare, principalmente nei lavori di gruppo, ma anche a livello personale. Ognuno di questi utilizzati git in diverse maniere a seconda delle sue caratteristiche.
+	\subsection{Branching Model} % (fold)
+	\label{sub:branching_model}
+	In riferimento all'articolo presente al link: \\
+	\url{http://nvie.com/posts/a-successful-git-branching-model/}, viene esposto il modello di sviluppo su git basato su diversi branch. \\
+	TO DO
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.4]{images/git_branch_workflow.png}
+		\caption{Git - Branch Workflow Model}
+		\label{fig:git_branch_workflow_model}
+	\end{figure}
+	% subsection branching_model (end)
 % section workflow (end)
 
 
