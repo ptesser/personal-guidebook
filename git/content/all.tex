@@ -15,7 +15,9 @@
 % =================================================================================================
 % 0.0.4			2015-02-03			commentate due parti di codice (verbatim) per bug	Tesser Paolo
 % =================================================================================================
-% 0.0.5			2015-02-03			aggiunto comando line 21 per fix bug (solo su git)	Tesser Paolo		
+% 0.0.5			2015-02-03			aggiunto comando line 21 per fix bug (solo su git)	Tesser Paolo
+% =================================================================================================
+% 0.0.6			2015-02-03			stesura sezione sui tips per velocizzare lavoro		Tesser Paolo
 % =================================================================================================
 %
 
@@ -304,6 +306,28 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 	% subsection lavorare_in_remoto (end)
 
 % section lavorare_sul_repository (end)
+
+\newpage \clearpage
+\section{Tips per velocizzare il lavoro} % (fold)
+\label{sec:tips_per_velocizzare_il_lavoro}
+Esistono diversi modi per velocizzare l'uso di git, in modo da renderlo meno frustrante e più appetibile durante le attività di sviluppo.
+	\subsection{Auto completamento} % (fold)
+	\label{sub:auto_completamento}
+	Git di base non offre l'auto completamento per i suoi comandi, bisogna ogni volta quindi scriverli per esteso. Seguendo le istruzioni presenti al seguente link: \url{http://code-worrier.com/blog/autocomplete-git/} sarà possibile abilitare questa funzionalità.
+	% subsection auto_completamento (end)
+	
+	\subsection{Alias} % (fold)
+	\label{sub:alias}
+	Un altro modo più veloce di eseguire i comandi di git, è definendo degli alias per i comandi che utilizziamo maggiormente. Questo può essere fatto nel modo seguente:
+	\begin{verbatim}
+		# comandi singoli
+		path: git config --gloabl alias.nome_alias nome_comando
+		# comandi con opzioni
+		path: git config --gloabl alias.nome_alias 'nome_comando opzione'
+	\end{verbatim}
+	% subsection alias (end)
+
+% section tips_per_velocizzare_il_lavoro (end)
 
 \newpage \clearpage
 \section{Git Hooks} % (fold)
