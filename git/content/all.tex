@@ -15,14 +15,20 @@
 % =================================================================================================
 % 0.0.4			2015-02-03			commentate due parti di codice (verbatim) per bug	Tesser Paolo
 % =================================================================================================
+% 0.0.5			2015-02-03			aggiunto comando line 21 per fix bug (solo su git)	Tesser Paolo		
+% =================================================================================================
 %
+
+\global\let\tikz@ensure@dollar@catcode=\relax % fix verbatim PROBLEM
 
 % CONTENUTO DEL CAPITOLO
 
 \section{Introduzione} % (fold)
 \label{sec:introduzione}
-Git è un sistema di controllo di versione distribuito. \\
-\textbf{Distribuito} (DVCS) significa che ogni componente, del gruppo di lavoro, possiede una copia locale completa del repository. \\
+Git è un sistema di controllo di versione distribuito.
+\newline
+\textbf{Distribuito} (DVCS) significa che ogni componente, del gruppo di lavoro, possiede una copia locale completa del repository.
+\newline
 
 \noindent
 \textbf{Vantaggi}:
@@ -32,7 +38,7 @@ Git è un sistema di controllo di versione distribuito. \\
 		\item ognuno ha in locale un backup del repository.
 	\end{itemize}
 	\noindent
-	\\
+	\newline
 La seguente immagine serve per dare un idea generale di come git lavori e tramite quali operazioni di base. Viene mostrato inoltre il rapporto tra la gestione in locale del repository con quello in remoto. Il dettaglio delle operazioni sarà illustrato prevalentemente nella sezione \ref{sec:lavorare_sul_repository}.
 
 	\begin{figure}[htbp]
@@ -56,7 +62,7 @@ La seguente immagine serve per dare un idea generale di come git lavori e tramit
 \newpage \clearpage
 \section{Riferimenti} % (fold)
 \label{sec:riferimenti}
-Di seguito viene spiegato attraverso quali nomi git si riferisce a determinati stati del versionamento. \\ \\
+Di seguito viene spiegato attraverso quali nomi git si riferisce a determinati stati del versionamento. \newline \newline
 
 \textbf{Riferimenti specifici}:
 	\begin{itemize}
@@ -83,7 +89,7 @@ Di seguito viene spiegato attraverso quali nomi git si riferisce a determinati s
 \newpage \clearpage
 \section{Impostare git} % (fold)
 \label{sec:impostare_git}
-La prima volta che si installa git è buona pratica impostare da subito alcune credenziali. \\
+La prima volta che si installa git è buona pratica impostare da subito alcune credenziali. \newline
 Queste credenziali possono essere impostate su diversi livelli:
 	\begin{itemize}
 		\item \textbf{global}: valide quindi per tutti i repository dell'utente. Si trovano nel file:
@@ -113,7 +119,7 @@ Da linea di comando eseguire i seguenti comandi, cambiando l'opzione ``global'' 
 \newpage \clearpage
 \section{Creare un repository} % (fold)
 \label{sec:creare_un_repository}
-Un repository può essere creato in locale e usato solo nel computer dell'utente, anche se questo non permetterà un lavoro collaborativo, oppure, dopo la creazione in locale, può essere associato ad un repository creato su un server (o attraverso un servizio di hosting). \\
+Un repository può essere creato in locale e usato solo nel computer dell'utente, anche se questo non permetterà un lavoro collaborativo, oppure, dopo la creazione in locale, può essere associato ad un repository creato su un server (o attraverso un servizio di hosting). \newline
 Per creare un repository su un servizio di hosting basta seguire le istruzione che il sito propone.
 	\subsection{Creazione in locale} % (fold)
 	\label{sub:creazione_in_locale}
@@ -150,7 +156,8 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				La staging area è il luogo dove sono presenti i file pronti per essere committati.
 				Se si vogliono aggiungere più file contemporaneamente o solo alcuni, possiamo eseguire in esclusione questi comandi:
 					\begin{verbatim}
-					path: git add --all # aggiunge tutti i file presenti nella unstaging area
+					# aggiunge tutti i file presenti nella unstaging area
+					path: git add --all
 					path: git add <list of file>
 					path: git add *.ext
 					path: git add dir/
@@ -168,8 +175,8 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				path: git commit -m "msg"
 				\end{verbatim}
 				\noindent
-				Quest'ultima operazione può essere effettuata anche senza l'opzione -m, in tal caso la procedura seguirà lo schema illustrato nella sezione TO DO; \\
-				Importante e \textbf{obbligatorio} è effettuare commit atomici in quanto se qualcosa andasse storto, per colpa di qualche inserimento sbagliato, sarebbe più facile effettuare una ricerca dell'errore. Inoltre, questa metodologia, permette di dare una descrizione più efficace sul messaggio di cosa si sta facendo e soprattutto meno prolissa in quanto vado ad aggiungere meno cose contemporaneamente. \\
+				Quest'ultima operazione può essere effettuata anche senza l'opzione -m, in tal caso la procedura seguirà lo schema illustrato nella sezione TO DO; \newline
+				Importante e \textbf{obbligatorio} è effettuare commit atomici in quanto se qualcosa andasse storto, per colpa di qualche inserimento sbagliato, sarebbe più facile effettuare una ricerca dell'errore. Inoltre, questa metodologia, permette di dare una descrizione più efficace sul messaggio di cosa si sta facendo e soprattutto meno prolissa in quanto vado ad aggiungere meno cose contemporaneamente. \newline
 				Il messaggio che viene inserito deve essere di facile interpretazione. Non bisogna scrivere cose generiche o superflue.
 				 
 		\end{itemize}
@@ -183,7 +190,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\subsubsection{Visualizzare le differenze} % (fold)
 		\label{ssub:visualizzare_le_differenze}
 		Per osservare le differenze di un file in relazione a dove si trova:
-		\begin{comment}
+		% \begin{comment}
 			\begin{verbatim}
 			# per osservare le modifiche sui file non ancora inseriti
 			# nella staging area con quelli presenti su Index
@@ -195,11 +202,11 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			# rispetto a quelli su HEAD
 			path: git diff HEAD
 			\end{verbatim}
-		\end{comment}
+		% \end{comment}
 
 		% subsubsection visualizzare_le_differenze (end)
 		
-		\subsubsection{Rimuovere i file dalla staging area} % (fold)
+		\subsubsection{Rimuovere i file dalla staging area (reset)} % (fold)
 		\label{ssub:rimuovere_i_file_dalla_staging_area}
 		Per rimuovere dei file aggiunti nella staging area, tramite il comando \textbf{git add}, bisogna lanciare il seguente comando:
 			\begin{verbatim}
@@ -207,29 +214,28 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			path: git reset HEAD nome_del_file # per rimuovere solo quello specificato
 			\end{verbatim}
 		\noindent
-		La variabile Index viene portata indietro di un passo. \\ \\
+		La variabile Index viene portata indietro di un passo. \newline \newline
 		Per annullare l'ultimo commit dobbiamo eseguire il seguente comando:
 			\begin{verbatim}
 			path: git reset --soft HEAD^
 			\end{verbatim}
 		\noindent
-		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area, quindi puntati dalla variabile Index. \\
-		La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \\
-		La variabile HEAD viene portata indietro di un passo. \\
-		\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file. \\
-
+		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area, quindi puntati dalla variabile Index. \newline
+		La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \newline
+		La variabile HEAD viene portata indietro di un passo. \newline
+		\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file. \newline \newline
 		Per rimuovere l'ultimo commit dobbiamo eseguire il seguente comando:
 			\begin{verbatim}
 			path: git reset --hard HEAD^
 			\end{verbatim}
 		\noindent
-		Le variabili HEAD, Index e Working Tree vengono portate indietro di un passo. \\
-		Questo comando è potenzialmente dannoso perché rischi di farti perdere il lavoro presente nella Working Tree. \'E bene quindi utilizzarlo solo quando il comando \textbf{git status} dia un output pulito. \\
+		Le variabili HEAD, Index e Working Tree vengono portate indietro di un passo. \newline
+		Questo comando è potenzialmente dannoso perché rischi di farti perdere il lavoro presente nella Working Tree. \'E bene quindi utilizzarlo solo quando il comando \textbf{git status} da un output pulito. \newline
 		Non bisogna inoltre usare questo comando quando il commit è stato pushato in un repository pubblico, perché altri sviluppatori potrebbero fare riferimento ad un istanza che verrebbe rimossa.
 		
  		% subsubsection rimuovere_i_file_dalla_staging_area (end)
 		
-		\subsubsection{Annullare i cambiamenti} % (fold)
+		\subsubsection{Annullare i cambiamenti (checkout)} % (fold)
 		\label{ssub:annullare_i_cambiamenti}
 		Per riportare i file che si sono modificati, ma non ancora committati, allo stato dell'ultimo commit, bisogna eseguire il seguente comando:
 			\begin{verbatim}
@@ -237,7 +243,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			\end{verbatim}
 		% subsubsection annullare_i_cambiamenti (end)
 
-		\subsubsection{Ripristinare precedenti versioni} % (fold)
+		\subsubsection{Ripristinare precedenti versioni (revert)} % (fold)
 		\label{ssub:ripristinare_precedenti_versioni}
 		TO DO
 		% subsubsection ripristinare_precedenti_versioni (end)
@@ -245,9 +251,8 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 
 		\subsubsection{Branch} % (fold)
 		\label{ssub:branch}
-		A differenza di altri sistemi di versionamento, in git un branch è semplicemente un puntatore a un commit. \\
-		Le operazioni di branching sono elencate di seguito: \\
-		\begin{comment}
+		A differenza di altri sistemi di versionamento, in git un branch è semplicemente un puntatore a un commit. \newline
+		Le operazioni di branching sono elencate di seguito:
 			\begin{itemize}
 				\item creare un branch:
 					\begin{verbatim}
@@ -271,8 +276,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 					path: git branch -m nome_del_branch_vecchio nome_del_branch_nuovo
 					\end{verbatim}
 			\end{itemize}
-		\end{comment}
-
+			\noindent
 		TO DO
 		% subsubsection branch (end)
 
@@ -318,8 +322,8 @@ TO DO
 In questa sezione vengono illustrati alcuni modelli di sviluppo che si possono adottare, principalmente nei lavori di gruppo, ma anche a livello personale. Ognuno di questi utilizzati git in diverse maniere a seconda delle sue caratteristiche.
 	\subsection{Branching Model} % (fold)
 	\label{sub:branching_model}
-	In riferimento all'articolo presente al link: \\
-	\url{http://nvie.com/posts/a-successful-git-branching-model/}, viene esposto il modello di sviluppo su git basato su diversi branch. \\
+	In riferimento all'articolo presente al link: \newline
+	\url{http://nvie.com/posts/a-successful-git-branching-model/}, viene esposto il modello di sviluppo su git basato su diversi branch. \newline
 	TO DO
 	\begin{figure}[htbp]
 		\centering
