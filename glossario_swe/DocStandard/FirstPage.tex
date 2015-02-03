@@ -1,0 +1,34 @@
+% File: FirstPage.tex
+% Created: 2014-11-07
+% Author: Tesser Paolo
+% Email: p.tesser921@gmail.com
+% 
+%
+% Modification History
+% Version	Modifier Date	Author			Change
+% ====================================================================
+% 0.0.1	2014-11-09	Tesser Paolo		inserito intestazione gestita tramite una tabella
+% ====================================================================
+% 
+%
+
+
+\begin{center}
+
+	\textbf{\Large Informazioni sul documento}
+	\vspace{0.5 cm}
+
+	\begin{longtable}{ l | p{6 cm} } % indica la larghezza della colonna di destra
+		\textbf{Nome documento} &  {\documentName}\\[0.5 cm]
+		\textbf{Data redazione} & {\redactionDate} \\[0.5 cm]
+		\textbf{Redattori} & \parbox{\textwidth}{\documentAuthor} \\[0.5 cm]
+	\end{longtable}
+
+	\vspace{2 cm}
+
+	\textbf{\Large Sommario} \\
+	\documentScope
+
+\end{center}
+
+\pagebreak
