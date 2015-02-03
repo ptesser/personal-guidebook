@@ -1,4 +1,4 @@
-latex=pdflatex -synctex=1 -interaction=nonstopmode
+latex=pdflatex -synctex=1
 # aspell=sudo aspell --mode=tex --lang=it check
 
 compile: 
