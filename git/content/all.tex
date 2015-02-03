@@ -19,6 +19,8 @@
 % =================================================================================================
 % 0.0.6			2015-02-03			stesura sezione sui tips per velocizzare lavoro		Tesser Paolo
 % =================================================================================================
+% 0.0.7			2015-02-03			sezione branch + commit amend						Tesser Paolo
+% =================================================================================================
 %
 
 \global\let\tikz@ensure@dollar@catcode=\relax % fix verbatim PROBLEM
@@ -179,7 +181,13 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				\noindent
 				Quest'ultima operazione può essere effettuata anche senza l'opzione -m, in tal caso la procedura seguirà lo schema illustrato nella sezione TO DO; \newline
 				Importante e \textbf{obbligatorio} è effettuare commit atomici in quanto se qualcosa andasse storto, per colpa di qualche inserimento sbagliato, sarebbe più facile effettuare una ricerca dell'errore. Inoltre, questa metodologia, permette di dare una descrizione più efficace sul messaggio di cosa si sta facendo e soprattutto meno prolissa in quanto vado ad aggiungere meno cose contemporaneamente. \newline
-				Il messaggio che viene inserito deve essere di facile interpretazione. Non bisogna scrivere cose generiche o superflue.
+				Il messaggio che viene inserito deve essere di facile interpretazione. Non bisogna scrivere cose generiche o superflue. \newline
+				Se ci si accorge di aver dimenticato qualcosa nell'ultimo commit, è sempre possibile, tramite il comando:
+				\begin{verbatim}
+				path: git commit --amend
+				\end{verbatim}
+				combinare i file presenti nella staging area con quelli del precedente commit ed estendere il precedente messaggio. Può però anche solo essere usato appunto per cambiare il messaggio, senza aggiungere nulla.\newline
+				Questa operazione andrebbe \textbf{esclusivamente} fatta quando non si ha ancora pushato nel repository remoto (pubblico) il cambiamento, altrimenti potrebbe generare qualche conflitto inaspettato (nulla che git non risolva da solo nella maggior parte delle volte). Questo avviene perché l'operazione non altera il commit precedente, ma lo rimpiazza completamente.
 				 
 		\end{itemize}
 	\noindent
@@ -208,51 +216,64 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 
 		% subsubsection visualizzare_le_differenze (end)
 		
-		\subsubsection{Rimuovere i file dalla staging area (reset)} % (fold)
-		\label{ssub:rimuovere_i_file_dalla_staging_area}
-		Per rimuovere dei file aggiunti nella staging area, tramite il comando \textbf{git add}, bisogna lanciare il seguente comando:
-			\begin{verbatim}
-			path: git reset HEAD # per rimuovere tutti i file
-			path: git reset HEAD nome_del_file # per rimuovere solo quello specificato
-			\end{verbatim}
-		\noindent
-		La variabile Index viene portata indietro di un passo. \newline \newline
-		Per annullare l'ultimo commit dobbiamo eseguire il seguente comando:
-			\begin{verbatim}
-			path: git reset --soft HEAD^
-			\end{verbatim}
-		\noindent
-		L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area, quindi puntati dalla variabile Index. \newline
-		La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \newline
-		La variabile HEAD viene portata indietro di un passo. \newline
-		\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file. \newline \newline
-		Per rimuovere l'ultimo commit dobbiamo eseguire il seguente comando:
-			\begin{verbatim}
-			path: git reset --hard HEAD^
-			\end{verbatim}
-		\noindent
-		Le variabili HEAD, Index e Working Tree vengono portate indietro di un passo. \newline
-		Questo comando è potenzialmente dannoso perché rischi di farti perdere il lavoro presente nella Working Tree. \'E bene quindi utilizzarlo solo quando il comando \textbf{git status} da un output pulito. \newline
-		Non bisogna inoltre usare questo comando quando il commit è stato pushato in un repository pubblico, perché altri sviluppatori potrebbero fare riferimento ad un istanza che verrebbe rimossa.
 		
- 		% subsubsection rimuovere_i_file_dalla_staging_area (end)
 		
-		\subsubsection{Annullare i cambiamenti (checkout)} % (fold)
-		\label{ssub:annullare_i_cambiamenti}
-		Per riportare i file che si sono modificati, ma non ancora committati, allo stato dell'ultimo commit, bisogna eseguire il seguente comando:
+		
+		\subsubsection{Gestione dei cambiamenti} % (fold)
+		\label{ssub:gestione_dei_cambiamenti}
+		
+			\paragraph{Checkout} % (fold)
+			\label{par:checkout}
+			Per riportare i file che si sono modificati, ma non ancora committati, allo stato dell'ultimo commit, bisogna eseguire il seguente comando:
+				\begin{verbatim}
+				path: git checkout TO DO
+				\end{verbatim}
+				
+			% paragraph checkout (end)
+		
+			\paragraph{Revert} % (fold)
+			\label{par:revert}
+			Se vogliamo tornare a una precedente configurazione, ma senza cancellare la precedente storia, dobbiamo utilizzare il seguente comando:
 			\begin{verbatim}
-			path: git checkout -- nome_del_file
+			path: git revert <commit_ref>
 			\end{verbatim}
-		% subsubsection annullare_i_cambiamenti (end)
-
-		\subsubsection{Ripristinare precedenti versioni (revert)} % (fold)
-		\label{ssub:ripristinare_precedenti_versioni}
-		TO DO
-		% subsubsection ripristinare_precedenti_versioni (end)
-
-
-		\subsubsection{Branch} % (fold)
-		\label{ssub:branch}
+			Questo viene fatto appendendo un nuovo commit, avente i file alla versione espressa nel comando. \newline
+			\'E \textbf{buona pratica} utilizzare questo comando, a discapito di altri che possono attuare la stessa pratica, quando bisogna agire su un repository pubblico, condiviso con altri.
+			% paragraph revert (end)
+		
+			\paragraph{Reset} % (fold)
+			\label{par:reset}
+			Per rimuovere dei file aggiunti nella staging area, tramite il comando \textbf{git add}, bisogna lanciare il seguente comando:
+				\begin{verbatim}
+				path: git reset HEAD # per rimuovere tutti i file
+				path: git reset HEAD nome_del_file # per rimuovere solo quello specificato
+				\end{verbatim}
+			\noindent
+			La variabile Index viene portata indietro di un passo. \newline \newline
+			Per annullare l'ultimo commit dobbiamo eseguire il seguente comando:
+				\begin{verbatim}
+				path: git reset --soft HEAD^
+				\end{verbatim}
+			\noindent
+			L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area, quindi puntati dalla variabile Index. \newline
+			La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \newline
+			La variabile HEAD viene portata indietro di un passo. \newline
+			\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file. \newline \newline
+			Per rimuovere l'ultimo commit dobbiamo eseguire il seguente comando:
+				\begin{verbatim}
+				path: git reset --hard HEAD^
+				\end{verbatim}
+			\noindent
+			Le variabili HEAD, Index e Working Tree vengono portate indietro di un passo. \newline
+			Questo comando è potenzialmente dannoso perché rischi di farti perdere il lavoro presente nella Working Tree. \'E bene quindi utilizzarlo solo quando il comando \textbf{git status} da un output pulito. \newline
+			\textbf{Non bisogna} inoltre usare questo comando quando il commit è stato pushato in un repository pubblico, perché altri sviluppatori potrebbero fare riferimento ad un istanza che verrebbe rimossa.
+			% paragraph reset (end)
+			
+		% subsubsection gestione_dei_cambiamenti (end)
+		
+		
+		\subsubsection{Gestione dei branch} % (fold)
+		\label{ssub:gestione_dei_branch_locale}
 		A differenza di altri sistemi di versionamento, in git un branch è semplicemente un puntatore a un commit. \newline
 		Le operazioni di branching sono elencate di seguito:
 			\begin{itemize}
@@ -279,12 +300,19 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 					\end{verbatim}
 			\end{itemize}
 			\noindent
-		TO DO
+		
+		In git ci sono due modi per integrare i cambiamenti di un branch su un altro.
+			\begin{enumerate}
+				\item \textbf{Merge}: TO DO;
+				
+				
+				\item \textbf{Rebase}: TO DO.
+			\end{enumerate}
 		% subsubsection branch (end)
 
 
-		\subsubsection{Tag} % (fold)
-		\label{ssub:tag}
+		\subsubsection{Gestione dei tag} % (fold)
+		\label{ssub:gestione_dei_tag_locale}
 		TO DO
 		% subsubsection tag (end)
 		
@@ -293,15 +321,18 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 	\subsection{Lavorare in remoto} % (fold)
 	\label{sub:lavorare_in_remoto}
 	TO DO
-		\subsubsection{Pubblicare un branch} % (fold)
-		\label{ssub:pubblicare_un_branch}
-		TO DO
-		% subsubsection pubblicare_un_branch (end)
+		\subsubsection{Gestione dei branch} % (fold)
+		\label{ssub:gestione_dei_branch_remoto}
+		Le operazioni di branching sono elencate di seguito:
+			\begin{itemize}
+				\item TO DO
+			\end{itemize}
+		% subsubsection gestione_dei_branch (end)
 
-		\subsubsection{Pubblicare un tag} % (fold)
-		\label{ssub:pubblicare_un_tag}
+		\subsubsection{Gestione dei tag} % (fold)
+		\label{ssub:gestione_dei_tag_remoto}
 		TO DO
-		% subsubsection pubblicare_un_tag (end)
+		% subsubsection gestione_dei_tag (end)
 
 	% subsection lavorare_in_remoto (end)
 
