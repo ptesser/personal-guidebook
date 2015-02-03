@@ -6,15 +6,16 @@
 % Email:		p.tesser921@gmail.com
 % =================================================================================================
 % Modification History:
-% Version		Modifier Date		Change											Author
-% 0.0.1 		2015-01-29 			iniziata stesura documento di prova				Tesser Paolo
+% Version		Modifier Date		Change												Author
+% 0.0.1 		2015-01-29 			iniziata stesura documento di prova					Tesser Paolo
 % =================================================================================================
-% 0.0.2			2015-02-02			aggiunta img + migliorata sez. configurazioni	Tesser Paolo
+% 0.0.2			2015-02-02			aggiunta img + migliorata sez. configurazioni		Tesser Paolo
 % =================================================================================================
-% 0.0.3			2015-02-02			aggiunta sezione per i workflow, da stendere	Tesser Paolo
+% 0.0.3			2015-02-02			aggiunta sezione per i workflow, da stendere		Tesser Paolo
+% =================================================================================================
+% 0.0.4			2015-02-03			commentate due parti di codice (verbatim) per bug	Tesser Paolo
 % =================================================================================================
 %
-
 
 % CONTENUTO DEL CAPITOLO
 
@@ -182,14 +183,19 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\subsubsection{Visualizzare le differenze} % (fold)
 		\label{ssub:visualizzare_le_differenze}
 		Per osservare le differenze di un file in relazione a dove si trova:
+		\begin{comment}
 			\begin{verbatim}
-			# per osservare le modifiche sui file non ancora inseriti nella staging area con quelli presenti su Index
+			# per osservare le modifiche sui file non ancora inseriti
+			# nella staging area con quelli presenti su Index
 			path: git diff nome_del_file
-			# per osservare le modifiche sui file già inseriti nella staging area con quelli presenti su HEAD
+			# per osservare le modifiche sui file già inseriti nella staging area
+			# con quelli presenti su HEAD
 			path: git diff --staged nome_del_file
-			# per osservare le modifiche sui file nella staging area rispetto a quelli su HEAD
+			# per osservare le modifiche sui file nella staging area
+			# rispetto a quelli su HEAD
 			path: git diff HEAD
 			\end{verbatim}
+		\end{comment}
 
 		% subsubsection visualizzare_le_differenze (end)
 		
@@ -240,7 +246,8 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\subsubsection{Branch} % (fold)
 		\label{ssub:branch}
 		A differenza di altri sistemi di versionamento, in git un branch è semplicemente un puntatore a un commit. \\
-		Le operazioni di branching sono elencate di seguito:
+		Le operazioni di branching sono elencate di seguito: \\
+		\begin{comment}
 			\begin{itemize}
 				\item creare un branch:
 					\begin{verbatim}
@@ -264,7 +271,8 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 					path: git branch -m nome_del_branch_vecchio nome_del_branch_nuovo
 					\end{verbatim}
 			\end{itemize}
-			\noindent
+		\end{comment}
+
 		TO DO
 		% subsubsection branch (end)
 
