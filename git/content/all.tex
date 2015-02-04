@@ -21,7 +21,10 @@
 % =================================================================================================
 % 0.0.7			2015-02-03			sezione branch + commit amend						Tesser Paolo
 % =================================================================================================
+% 0.0.8			2015-02-04			parte sul merge e sul rebase						Tesser Paolo
+% =================================================================================================
 %
+
 
 \global\let\tikz@ensure@dollar@catcode=\relax % fix verbatim PROBLEM
 
@@ -78,7 +81,7 @@ Di seguito viene spiegato attraverso quali nomi git si riferisce a determinati s
 		\item \textbf{v1.0.0}: il nome di un tag per riferirsi ad esso.
 	\end{itemize}
 	\noindent
-\textbf{Riferimenti relativi}:
+\textbf{Riferimenti relativi}: TO DO
 \begin{comment}
 	\begin{itemize}
 		\item il commit precedente: ref\textasciitilde1 oppure ref^;
@@ -140,7 +143,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\end{center}
 
 	% subsection creazione_in_locale (end)
-	
+
 % section creare_un_repository (end)
 
 \newpage \clearpage
@@ -154,7 +157,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			\item creare un file;
 			\item aggiungerlo alla \textbf{staging area} attraverso il comando:
 				\begin{verbatim}
-				path: git add nome_del_file.ext
+				path: git add <nome_del_file.ext>
 				\end{verbatim}
 				\noindent
 				La staging area è il luogo dove sono presenti i file pronti per essere committati.
@@ -188,7 +191,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				\end{verbatim}
 				combinare i file presenti nella staging area con quelli del precedente commit ed estendere il precedente messaggio. Può però anche solo essere usato appunto per cambiare il messaggio, senza aggiungere nulla.\newline
 				Questa operazione andrebbe \textbf{esclusivamente} fatta quando non si ha ancora pushato nel repository remoto (pubblico) il cambiamento, altrimenti potrebbe generare qualche conflitto inaspettato (nulla che git non risolva da solo nella maggior parte delle volte). Questo avviene perché l'operazione non altera il commit precedente, ma lo rimpiazza completamente.
-				 
+
 		\end{itemize}
 	\noindent
 	Per osservare i cambiamenti avvenuti dall'ultima operazione di commit basta lanciare il comando:
@@ -204,10 +207,10 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			\begin{verbatim}
 			# per osservare le modifiche sui file non ancora inseriti
 			# nella staging area con quelli presenti su Index
-			path: git diff nome_del_file
+			path: git diff <nome_del_file>
 			# per osservare le modifiche sui file già inseriti nella staging area
 			# con quelli presenti su HEAD
-			path: git diff --staged nome_del_file
+			path: git diff --staged <nome_del_file>
 			# per osservare le modifiche sui file nella staging area
 			# rispetto a quelli su HEAD
 			path: git diff HEAD
@@ -215,25 +218,24 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		% \end{comment}
 
 		% subsubsection visualizzare_le_differenze (end)
-		
-		
-		
-		
+
+
+
 		\subsubsection{Gestione dei cambiamenti} % (fold)
 		\label{ssub:gestione_dei_cambiamenti}
 		
 			\paragraph{Checkout} % (fold)
 			\label{par:checkout}
-			Per riportare i file che si sono modificati, ma non ancora committati, allo stato dell'ultimo commit, bisogna eseguire il seguente comando:
-				\begin{verbatim}
-				path: git checkout TO DO
-				\end{verbatim}
-				
+			Per riportare i file che si sono presenti nel working tree, ad un determinato stato, bisogna eseguire il seguente comando:
+			\begin{verbatim}
+			path: git checkout <commit_ref> <nome_file>
+			\end{verbatim}
+			Questo mette il puntatore in uno stato diverso da HEAD. Grazie a ciò è impossibile danneggiare il repository mentre si guarda una versione precedente, proprio perché lo stato corrente rimane intoccato. Qualora si volesse utilizzare la versione in cui ci si è spostati, per aggiornare il repository a quello stato, basterebbe ri-committare lo stato in cui siamo e verrebbe creato un nuovo snapshot facendo avanzare l'HEAD.
 			% paragraph checkout (end)
-		
+
 			\paragraph{Revert} % (fold)
 			\label{par:revert}
-			Se vogliamo tornare a una precedente configurazione, ma senza cancellare la precedente storia, dobbiamo utilizzare il seguente comando:
+			Se vogliamo tornare a una precedente configurazione, \textbf{ma senza cancellare la precedente storia}, dobbiamo utilizzare il seguente comando:
 			\begin{verbatim}
 			path: git revert <commit_ref>
 			\end{verbatim}
@@ -246,7 +248,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			Per rimuovere dei file aggiunti nella staging area, tramite il comando \textbf{git add}, bisogna lanciare il seguente comando:
 				\begin{verbatim}
 				path: git reset HEAD # per rimuovere tutti i file
-				path: git reset HEAD nome_del_file # per rimuovere solo quello specificato
+				path: git reset HEAD <nome_del_file> # per rimuovere solo quello specificato
 				\end{verbatim}
 			\noindent
 			La variabile Index viene portata indietro di un passo. \newline \newline
@@ -255,7 +257,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				path: git reset --soft HEAD^
 				\end{verbatim}
 			\noindent
-			L'opzione --\textbf{soft} serve a lasciare i file, dell'ultima commit, nella staging area, quindi puntati dalla variabile Index. \newline
+			L'opzione \textbf{--soft} serve a lasciare i file, dell'ultima commit, nella staging area, quindi puntati dalla variabile Index. \newline
 			La direttiva \textbf{HEAD\^} serve per annullare i commit solo fino al penultimo, cioè quello precedente di quello che vogliano annullare. \newline
 			La variabile HEAD viene portata indietro di un passo. \newline
 			\textbf{Nota}: questi comandi non annullano le modifiche effettuate ai file. \newline \newline
@@ -279,24 +281,24 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			\begin{itemize}
 				\item creare un branch:
 					\begin{verbatim}
-					path: git branch nome_del_branch [punto di partenza]
+					path: git branch <nome_del_branch> [<punto di partenza>]
 					\end{verbatim}
 				\item cancellare un branch:
 					\begin{verbatim}
-					path: git branch -d|-D nome_del_branch
+					path: git branch -d|-D <nome_del_branch>
 					\end{verbatim}
 				\item muoversi tra i diversi branch:
 					\begin{verbatim}
-					path: git checkout nome_del_branch_dove_spostarsi
+					path: git checkout <nome_del_branch_dove_spostarsi>
 					\end{verbatim}
 				Questo comando può essere eseguito solo quando non ci sono file ancora da committare;
 				\item creare e spostarsi nel branch appena generato:
 					\begin{verbatim}
-					path: git checkout -b nome_del_branch
+					path: git checkout -b <nome_del_branch>
 					\end{verbatim}
 				\item rinominare un branch:
 					\begin{verbatim}
-					path: git branch -m nome_del_branch_vecchio nome_del_branch_nuovo
+					path: git branch -m <nome_del_branch_vecchio> <nome_del_branch_nuovo>
 					\end{verbatim}
 			\end{itemize}
 			\noindent
@@ -315,9 +317,9 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\label{ssub:gestione_dei_tag_locale}
 		TO DO
 		% subsubsection tag (end)
-		
+
 	% subsection lavorare_in_locale (end)
-	
+
 	\subsection{Lavorare in remoto} % (fold)
 	\label{sub:lavorare_in_remoto}
 	TO DO
@@ -346,7 +348,7 @@ Esistono diversi modi per velocizzare l'uso di git, in modo da renderlo meno fru
 	\label{sub:auto_completamento}
 	Git di base non offre l'auto completamento per i suoi comandi, bisogna ogni volta quindi scriverli per esteso. Seguendo le istruzioni presenti al seguente link: \url{http://code-worrier.com/blog/autocomplete-git/} sarà possibile abilitare questa funzionalità.
 	% subsection auto_completamento (end)
-	
+
 	\subsection{Alias} % (fold)
 	\label{sub:alias}
 	Un altro modo più veloce di eseguire i comandi di git, è definendo degli alias per i comandi che utilizziamo maggiormente. Questo può essere fatto nel modo seguente:
