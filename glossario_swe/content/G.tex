@@ -9,10 +9,19 @@
 % ====================================================================
 % 0.0.1		2014-11-07		Tesser-Paolo	inserita sezione
 % ====================================================================
-%
+% 0.0.2		2015-02-05		Tesser Paolo	inseriti vocaboli: Gestione delle configurazioni
+% ====================================================================
 %
 
 \section{G} % (fold)
 \label{sec:g}
-
+	\begin{itemize}
+		\item \textbf{Gestione di configurazione}: ci sono diverse attività che devono essere attuate per il raggiungimento di alcuni obbiettivi fondamentali. Questi obbiettivi sono: la messa in sicurezza della baseline, la prevenzione di sovrascritture accidentali su parti del sistema, la possibilità di ritornare a configurazioni precedenti e la possibilità di recuperare delle perdite accidentali. Tutto ciò viene raggiunto tramite le seguenti attività:
+			\begin{itemize}
+				\item \textbf{identificazione di configurazione}: bisogna capire quali parti (configuration item) compongono il prodotto. Questi CI, per un più facile controllo devono avere: un identificativo, un nome, una data, un autore, un registro delle modifiche e uno stato corrente;
+				\item \textbf{controllo di baseline}: in determinati momenti del ciclo di vita (milestone), una baseline deve essere verificata, approvata e garantita per la prosecuzione dello sviluppo, senza nessuna retrocessione. Questo permette di avere punti dello sviluppo che sono riproducibili, tracciabili e che permettono analisi e confronti;
+				\item \textbf{gestione delle modifiche}: per apportare un cambiamento c'è bisogno che il responsabile della baseline lo approvi dopo un rigoroso processo di analisi. Queste richieste di modifica hanno origine da diversi attori. Dagli utenti, se riscontrano difetti o mancanze, dagli sviluppatori o dalla competizione, per dare quindi un valore aggiunto al prodotto. Ciascuna delle richieste deve avere le seguenti informazioni: proponente, motivo, urgenza, stima di fattibilità, valutazione di impatto, stima di costo e decisione del responsabile. Va inoltre gestita attraverso il sistema di tickenting;
+				\item \textbf{controllo di versione}: questa attività si appoggia a un sistema di repository, un database/file system nel quale risiedono tutti i configuration item di ogni baseline nella loro storia completa. Vanno inseriti solo quelli che necessitano di versionamento (ad esempio guide create all'esterno del team non necessitano di essere inserite). Questo permette a tutti di lavorare su vecchi e nuovi CI senza rischio di sovrascritture accidentali, e di condividere il lavoro;
+			\end{itemize}
+	\end{itemize}
 % section g (end)

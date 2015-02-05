@@ -9,10 +9,31 @@
 % ====================================================================
 % 0.0.1		2014-11-07		Tesser-Paolo	inserita sezione
 % ====================================================================
-%
+% 0.0.2		2015-02-05		Tesser Paolo	inseriti vocaboli: Norme di progetto
+% ====================================================================
 %
 
 \section{N} % (fold)
 \label{sec:n}
+	\begin{itemize}
+		\item \textbf{Norme di progetto}: sono le linee guida per le attività di sviluppo e devono essere in larga misura automatizzate. Una norma può essere:
+			\begin{itemize}
+				\item \textbf{regola}: ed in tal caso la sua applicazione è obbligatoria, richiedendone il rispetto prima e accertato dopo. Di solito sono convenzioni di cui si riconosce la necessità e convenienza;
+				\item \textbf{raccomandazione}: una prassi desiderabile, senza però ne venga verificato il rispetto.
+			\end{itemize}
+			\noindent \newline
+		Di esse ne deve essere identificato il contesto, in quanto non tutto può essere regolamentato. Inoltre troppo regole sono di difficile attuazione e verifica. \newline
+		Le norme possono riguardare diversi ambiti. Alcuni di essi vengono descritti di seguito:
+			\begin{itemize}
+				\item \textbf{norme di codifica}: una buona leggibilità del codice ne permette una più facile verifica, manutenzione e portabilità. Bisogna accertarsi in particolare che ciò che viene codificato sia comprensibile a distanza di tempo e a chi non lo ha prodotto;
+				\item \textbf{convenzioni sui nomi}: per far si che ci sia omogeneità tra le diverse componenti che vengono sviluppate, ci deve essere un attenzione rigorosa su come identifichiamo ciò che è presente nel nostro repository e all'interno dei file stessi;
+				\item \textbf{indentazione del codice}: in modo da poter evidenziare facilmente la struttura e i costrutti di programmazione. Non bisogna sottovalutare la lunghezza delle linee e l'ampiezza dell'indentazione;
+				\item \textbf{intestazione del codice}: serve a identificare e collocare ciascuna unità nel modo corretto. Inoltre serve per tenere traccia delle modifiche e del perché sono state fatte. Di solito va inserita nell'header del file e deve contenere: dati relativi all'unità, responsabilità, Copyright, copyleft, avvertenze e un registro delle modifiche.
+			\end{itemize}
+			\noindent
+		Questo insieme di regole servono perché il codice illeggibile è irritante, modificarlo costa tempo e denaro (e spesso rischioso). Deve quindi fungere da risorsa e non da ostacolo. \newline
+		Per fare questo inoltre c'è bisogno di una forte disciplina di programmazione attua a produrre codice che non generi errori fatali o warning. Ciò si può attuare più facilmente apportando alcune restrizioni sul linguaggio utilizzato, usando i costrutti più facilmente testabili, robusti e leggibili anche a scapito di maggiore potenza e velocità;
 
+
+	\end{itemize}
 % section n (end)
