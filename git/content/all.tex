@@ -21,9 +21,10 @@
 % =================================================================================================
 % 0.0.7			2015-02-03			sezione branch + commit amend						Tesser Paolo
 % =================================================================================================
-% 0.0.8			2015-02-04			parte sul merge e sul rebase						Tesser Paolo
+% 0.0.8			2015-02-04			parte sul rebase									Tesser Paolo
 % =================================================================================================
-%
+% 0.0.9			2015-02-07			collegamento locale remoto e branch in remoto		Tesser Paolo
+% =================================================================================================
 
 
 \global\let\tikz@ensure@dollar@catcode=\relax % fix verbatim PROBLEM
@@ -127,7 +128,7 @@ Da linea di comando eseguire i seguenti comandi, cambiando l'opzione ``global'' 
 \section{Creare un repository} % (fold)
 \label{sec:creare_un_repository}
 Un repository può essere creato in locale e usato solo nel computer dell'utente, anche se questo non permetterà un lavoro collaborativo, oppure, dopo la creazione in locale, può essere associato ad un repository creato su un server (o attraverso un servizio di hosting). \newline
-Per creare un repository su un servizio di hosting basta seguire le istruzione che il sito propone.
+Per creare un repository su un servizio di hosting basta seguire le istruzione che il sito propone e quando si vorrà lavorare in locale bisognerà effettuare la clonazione di esso in qualunque parte del sistema si desideri mantenere la repo (facendo attenzione ai permessi che si ottengono dalla clonazione).
 	\subsection{Creazione in locale} % (fold)
 	\label{sub:creazione_in_locale}
 	Di seguito viene illustrata la sequenza di comandi che dovranno essere eseguiti:
@@ -143,6 +144,17 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		\end{center}
 
 	% subsection creazione_in_locale (end)
+
+	\subsection{Collegamento repository locale con remota} % (fold)
+	\label{sub:collegamento_repository_locale_con_remota}
+	Per collegare un repository, creato localmente come descritto precedentemente, con uno presente su un servizio di hosting bisogna seguire i seguenti comandi:
+	\begin{verbatim}
+	path: cd nome_repo_exisiting
+	path: git remote add origin <url_hosting_repo>
+	path: git push -u origin master
+	\end{verbatim}
+
+	% subsection collegamento_repository_locale_con_remota (end)
 
 % section creare_un_repository (end)
 
@@ -305,6 +317,9 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		
 		In git ci sono due modi per integrare i cambiamenti di un branch su un altro.
 			\begin{enumerate}
+				\item \textbf{Merge}: TO DO;
+
+
 				\item \textbf{Rebase e Merge}: eseguendo prima l'operazione di rebase rispetto a quella di merge, sarà permesso muovere un branch da uno snapshot (iniziale) ad un altro, come illustrato nella figura seguente.
 					\begin{figure}[htbp]
 						\centering
@@ -312,11 +327,32 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 						\caption{Git - Rebase a branch}
 						\label{fig:git_rebase_a_branch}
 					\end{figure}
-				
+				Il comando da eseguire è dunque il seguente:
+				\begin{verbatim}
+				path: git rebase <base>
+				# dove <base> sta per un riferimento ad un preciso commit
+				\end{verbatim}
+				Questa operazione, anche se non sembra, crea dei nuovi commit e gli associa alla base indicata. Ciò vuol dire che la storia viene modificata. \newline
+				Di solito eseguiamo prima il rebase e poi il merge, per mantenere una storia lineare del progetto. Viene ora illustrata una sequenza di comandi che generalmente costituiscono gli step da eseguire durante una fase di sviluppo.
+				\begin{verbatim}
+				# dal master/develop branch
+				path: git checkout -b newfeature
+				[make changes]
+				path: git commit ...
+				path: git rebase master
+				path: git checkout master
+				path: git merge newfeature
+				path: git push origin master
+				# if the push fails
+				path: git pull --rebase 
+				\end{verbatim}
 
-				\item \textbf{Merge}: TO DO.
+				\item \textbf{Rebase --interactive e Merge}: TO DO.
 
 			\end{enumerate}
+			\noindent
+		Viene consigliato di usare un nuovo branch per ogni nuova feature/bug e di seguito incorporare i cambiamenti tramite il merge, ricordandosi prima di effettuare un rebase sul branch creato. \textbf{Questa pratica può essere evitata a seconda se si stanno usando o no dei modelli particolari di sviluppo}. \newline
+		\textbf{Non bisogna mai} effettuare un rebase su commit che sono già stati pushati su un repository pubblico.
 		% subsubsection branch (end)
 
 
@@ -329,13 +365,31 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 
 	\subsection{Lavorare in remoto} % (fold)
 	\label{sub:lavorare_in_remoto}
-	TO DO
+	TO DO (pull, fetch)
+
+
+
+
+
 		\subsubsection{Gestione dei branch} % (fold)
 		\label{ssub:gestione_dei_branch_remoto}
-		Le operazioni di branching sono elencate di seguito:
+		Le operazioni di branching che ci aiutano a gestire i branch condivisi in remoto sono elencate di seguito:
 			\begin{itemize}
-				\item TO DO
+				\item lista dei branch remoti:
+					\begin{verbatim}
+					path: git branch -r
+					\end{verbatim}
+				\item pushare un branch sull'origine (origin) in remoto:
+					\begin{verbatim}
+					path: git push origin <nome_del_branch>
+					\end{verbatim}
+				\item rimuovere un branch presente in remoto:
+					\begin{verbatim}
+					# da eseguire da dentro un altro branch
+					path: git push origin :<nome_del_branch>
+					\end{verbatim}
 			\end{itemize}
+			\noindent
 		% subsubsection gestione_dei_branch (end)
 
 		\subsubsection{Gestione dei tag} % (fold)
@@ -384,10 +438,10 @@ TO DO
 \section{Workflow} % (fold)
 \label{sec:workflow}
 In questa sezione vengono illustrati alcuni modelli di sviluppo che si possono adottare, principalmente nei lavori di gruppo, ma anche a livello personale. Ognuno di questi utilizzati git in diverse maniere a seconda delle sue caratteristiche.
-	\subsection{Branching Model} % (fold)
+	\subsection{Feature Branch Model (Gitflow)} % (fold)
 	\label{sub:branching_model}
 	In riferimento all'articolo presente al link: \newline
-	\url{http://nvie.com/posts/a-successful-git-branching-model/}, viene esposto il modello di sviluppo su git basato su diversi branch. \newline
+	\url{http://nvie.com/posts/a-successful-git-branching-model/}, viene esposto il modello di sviluppo su git basato su diversi branch. Un ulteriore spiegazione viene fornita dal seguente link: \url{https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow}. \newline
 	TO DO
 	\begin{figure}[htbp]
 		\centering
