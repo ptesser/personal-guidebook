@@ -317,7 +317,32 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		
 		In git ci sono due modi per integrare i cambiamenti di un branch su un altro.
 			\begin{enumerate}
-				\item \textbf{Merge}: TO DO;
+				\item \textbf{Merge}: questa operazione consente di inserire un pezzo di storia staccata dentro un'altra, unendo il tutto in un singolo branch. Il comando dunque da eseguire è:
+				\begin{verbatim}
+				path: git merge <nome_del_branch>
+				# oppure se si vuole generare un merge commit
+				# anche se è un fast-forward merge, utili per documentare tutti i merge
+				# che si verificano nel repository
+				path: git merge --no-ff <nome_del_branch>
+				\end{verbatim}
+				Ci sono due tipi di algoritmi che git può applicare quando effettua questa operazione:
+					\begin{itemize}
+						\item \textbf{Fast-forward merge}: può verificarsi quando c'è un percorso lineare dal branch corrente a quello bersaglio (che vogliamo inglobare in quello corrente). Ciò che accade e la situazione iniziale appena descritta viene rappresentata nella figura.
+						\begin{figure}[htbp]
+							\centering
+							\includegraphics[scale=0.6]{images/fast_forward_merge.pdf}
+							\caption{Git - Fast-forward merge}
+							\label{fig:git_fast_forward_merge}
+						\end{figure}
+
+						\item \textbf{3-way merge}: se il percorso non è lineare, git non ha scelta e deve utilizzare questo algoritmo per allacciare i due branch usando un commit specifico come illustrato nella figura.
+						\begin{figure}[htbp]
+							\centering
+							\includegraphics[scale=0.6]{images/3_way_merge.pdf}
+							\caption{Git - 3-way merge}
+							\label{fig:git_3_way_merge}
+						\end{figure}
+					\end{itemize}
 
 
 				\item \textbf{Rebase e Merge}: eseguendo prima l'operazione di rebase rispetto a quella di merge, sarà permesso muovere un branch da uno snapshot (iniziale) ad un altro, come illustrato nella figura seguente.
@@ -344,7 +369,7 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				path: git merge newfeature
 				path: git push origin master
 				# if the push fails
-				path: git pull --rebase 
+				path: git pull --rebase
 				\end{verbatim}
 
 				\item \textbf{Rebase --interactive e Merge}: TO DO.
@@ -354,7 +379,19 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		Viene consigliato di usare un nuovo branch per ogni nuova feature/bug e di seguito incorporare i cambiamenti tramite il merge, ricordandosi prima di effettuare un rebase sul branch creato. \textbf{Questa pratica può essere evitata a seconda se si stanno usando o no dei modelli particolari di sviluppo}. \newline
 		\textbf{Non bisogna mai} effettuare un rebase su commit che sono già stati pushati su un repository pubblico.
 		% subsubsection branch (end)
-
+			\paragraph{Risolvere i conflitti} % (fold)
+			\label{par:risolvere_i_conflitti}
+			Se due branch modificano la stessa parte di un file può verificarsi un conflitto. Quando ciò accade, il processo di merge viene sospeso fintanto che il conflitto non viene risolto dall'utente manualmente. Per terminare le operazioni bisognerà allora procedere nel modo seguente:
+			\begin{verbatim}
+			# mostrare quali file necessitano di essere risolti
+			path: git status
+			# comparirà allora la dicitura 'both modified <nome_file>'
+			# modificarli e rimuovere per ciascuno di essi il conflitto
+			path: git add <file_risolti>
+			path: git commit # genera un merge commit
+			\end{verbatim}
+			Da notare che i conflitti si verificano solo se avviene un 3-way merge.
+			% paragraph risolvere_i_conflitti (end)
 
 		\subsubsection{Gestione dei tag} % (fold)
 		\label{ssub:gestione_dei_tag_locale}
