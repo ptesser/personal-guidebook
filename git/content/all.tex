@@ -48,7 +48,12 @@ Git è un sistema di controllo di versione distribuito.
 	\noindent
 	\newline
 La seguente immagine serve per dare un idea generale di come git lavori e tramite quali operazioni di base. Viene mostrato inoltre il rapporto tra la gestione in locale del repository con quello in remoto. Il dettaglio delle operazioni sarà illustrato prevalentemente nella sezione \ref{sec:lavorare_sul_repository}.
-
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[scale=0.8]{images/git_component.pdf}
+		\caption{Git - Componenti}
+		\label{fig:git_componenti}
+	\end{figure}
 	\begin{figure}[htbp]
 		\centering
 		\includegraphics[scale=1.1]{images/git_local_remote.png}
@@ -238,11 +243,12 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 		
 			\paragraph{Checkout} % (fold)
 			\label{par:checkout}
-			Per riportare i file che si sono presenti nel working tree, ad un determinato stato, bisogna eseguire il seguente comando:
+			Per riportare i file che ci sono presenti nel working tree, ad un determinato stato, bisogna eseguire il seguente comando:
 			\begin{verbatim}
 			path: git checkout <commit_ref> <nome_file>
 			\end{verbatim}
-			Questo mette il puntatore in uno stato diverso da HEAD. Grazie a ciò è impossibile danneggiare il repository mentre si guarda una versione precedente, proprio perché lo stato corrente rimane intoccato. Qualora si volesse utilizzare la versione in cui ci si è spostati, per aggiornare il repository a quello stato, basterebbe ri-committare lo stato in cui siamo e verrebbe creato un nuovo snapshot facendo avanzare l'HEAD.
+			Questo mette il puntatore in uno stato diverso da HEAD. Grazie a ciò è impossibile danneggiare il repository mentre si guarda una versione precedente, proprio perché lo stato corrente rimane intoccato. Per fare ciò però git, non permette di lasciare dei file nel working tree. Bisognerà dunque o committare o effettuare uno stash sui file modificati. \newline
+			Qualora si volesse utilizzare la versione in cui ci si è spostati, per aggiornare il repository a quello stato, basterebbe ri-committare lo stato in cui siamo e verrebbe creato un nuovo snapshot facendo avanzare l'HEAD.
 			% paragraph checkout (end)
 
 			\paragraph{Revert} % (fold)
