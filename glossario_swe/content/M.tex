@@ -10,7 +10,9 @@
 % 0.0.1		2014-11-07		Tesser-Paolo	inserita sezione
 % ====================================================================
 % 0.0.2		2014-11-10		Tesser Paolo	inserita lista con aggiunta di alcune voci
-%
+% ====================================================================
+% 0.0.3		2015-02-10		Tesser Paolo	inseriti vocaboli: Modelli della qualità, Metriche software
+% ====================================================================
 %
 %
 
@@ -23,15 +25,22 @@ I componenti sono:
 	\begin{itemize}
 		\item Mondo DB : a NoSQL database;
 		\item Express.js : un framework per applicazioni web costruito in Node.js;
-		\item Angular.js : un framework basato sul design pattern MVC per web app;
+		\item AngularJS : un framework basato sul design pattern MVC per web app;
 		\item Node.js : una piattaforma software per gestire servizi web scalabili.
 	\end{itemize}
 
 	\item \textbf{Metrica di progetto (Metrics)}: sistema di misurazione composto da valori e metodi per valutarli in maniera oggettiva; 
-	
-	\item \textbf{Milestone}: TO DO;
 
-	\item \textbf{Modelli agili}: è uno dei modelli di ciclo di vita del SW. \newline
+	\item \textbf{Metriche Software}: [QS] TO DO;
+
+
+
+	\item \textbf{Milestone}: [PM] TO DO;
+
+
+
+
+	\item \textbf{Modelli agili}: [PM] è uno dei modelli di ciclo di vita del SW. \newline
 Nell'idea pura della metodologia agile viene perso il legame con l'ingegneria del software.
 Quello che viene proposto infatti è che le persone sono più importanti dei processi e degli strumenti imposti. Di seguito sono riportati i quattro principi fondanti:
 		\begin{enumerate}
@@ -43,22 +52,31 @@ Quello che viene proposto infatti è che le persone sono più importanti dei pro
 Questo modello ha come obiettivi quelli di riuscire a dimostrare costantemente al cliente quanto è stato fatto. Ciò da maggiore soddisfazione agli sviluppatori che vedono in breve tempo l'avanzamento del risultato finale. \newline
 Alcune tecniche agili sono: Scrum (caos organizzato) e Kanban (just-in-time).
 
-	\item \textbf{Modello a componenti}: è uno dei modelli di ciclo di vita del SW. Nasce dall'osservazione che molto di quello che ci serve esiste già e molto di quello che faremo ci servirà ancora. \newline
+	\item \textbf{Modello a componenti}: [PM] è uno dei modelli di ciclo di vita del SW. Nasce dall'osservazione che molto di quello che ci serve esiste già e molto di quello che faremo ci servirà ancora. \newline
 Generalmente costa meno come approccio e, se è stato fatto bene il componente che andremo ad integrare, ci sarà una buona probabilità che sia già testato.
 
-	\item \textbf{Modello evolutivo}: è uno dei modelli di ciclo di vita del SW. Esso aiuta a rispondere a bisogni non inizialmente preventivabili. Non si sa dove si vuole andare, ma si procede migliorando. \newline
+	\item \textbf{Modelli della qualità}: [QS] sono degli strumenti utili alla gestione per la qualità mediante valutazione della qualità dei prodotti. Essi si riferiscono a diverse visioni riguardo:
+		\begin{itemize}
+			\item l'utente: rispetto all'uso del prodotto;
+			\item la produzione: rispetto a qualifica, manutenzione, portabilità e riuso del prodotto;
+			\item la direzione: rispetto al rapporto costi/benefici.
+		\end{itemize}
+		\noindent
+		\'E buona pratica utilizzare un solo modello per committenti e fornitori, in modo da uniformare la percezione e la valutazione della qualità. Alcuni tra i più diffusi modelli sono quelli di Boehm o quello ISO/IEC 9126:2001. In quest'ultimo sono presenti 7 caratteristiche principali suddivise ulteriormente in 31 sotto caratteristiche che fanno raggiungere la qualità a un prodotto software;
+
+	\item \textbf{Modello evolutivo}: [PM] è uno dei modelli di ciclo di vita del SW. Esso aiuta a rispondere a bisogni non inizialmente preventivabili. Non si sa dove si vuole andare, ma si procede migliorando. \newline
 Può richiedere il rilascio e il mantenimento di più versioni esterne in parallelo che consentono una presenza molto vasta sul mercato ,ma ciò può essere estremamente costoso se il prodotto è di tipo commerciale. Alcuni esempi di ciò riguardano Google Chrome e Firefox.
 
-	\item \textbf{Modello incrementale}: è uno dei modelli di ciclo di vita del SW. Prevede rilasci multipli e successivi nei quali avviene un incremento di funzionalità. \newline
+	\item \textbf{Modello incrementale}: [PM] è uno dei modelli di ciclo di vita del SW. Prevede rilasci multipli e successivi nei quali avviene un incremento di funzionalità. \newline
 Alcune fasi però, come l'analisi e la progettazione, non vengono ripetute. Solo la realizzazione assume carattere incrementale iniziando dai requisiti essenziali per poi terminare con quelli desiderabile. In tal modo, già dopo non troppo tempo, si possono mostrare i risultati al committente e ricevere dei feedback. \newline
 Così è più facile e meno costoso effettuare dei miglioramenti o dei raffinamenti se necessario;
 
-	\item \textbf{Modello sequenziale (a cascata)}: è uno dei modelli di ciclo di vita del SW più consolidati e autoritari. Prevede una successione di fasi rigidamente sequenziali, non ammettendo ritorni a stati precedenti. Se si verificano eventi eccezionali, essi faranno ripartire dall'inizio. \newline
+	\item \textbf{Modello sequenziale (a cascata)}: [PM] è uno dei modelli di ciclo di vita del SW più consolidati e autoritari. Prevede una successione di fasi rigidamente sequenziali, non ammettendo ritorni a stati precedenti. Se si verificano eventi eccezionali, essi faranno ripartire dall'inizio. \newline
 Per passare da uno stato ad un altro vengono introdotte delle PRE e delle POST condizioni molto forti definite all'origine. Le fasi previste sono: Analisi, Progettazione, Realizzazione, Manutenzione. Esse sono distinte e non si sovrappongono. \newline
 Questo modello però pecca di eccessiva rigidità e spesso il committente non sa da subito quali sono le sue esigenze in maniera precisa.\newline
 Ci sono quindi delle correzioni che si possono apportare per renderlo più flessibile. Si può fare della prototipazione solo per capire meglio i requisiti o attuare dei ritorni, in modo che ogni ciclo di ritorno raggruppo delle sotto sequenze di fasi;
 
-	\item \textbf{Modello a spirale}: è uno dei modelli di ciclo di vita del SW. Viene impiegato in progetti fortemente innovativi perché si ha un miglior controllo dei rischi (risk driven). \newline
+	\item \textbf{Modello a spirale}: [PM] è uno dei modelli di ciclo di vita del SW. Viene impiegato in progetti fortemente innovativi perché si ha un miglior controllo dei rischi (risk driven). \newline
 Si attua mediante cicli interni rapidi e ripetuti che consistono in analisi e sviluppo di prototipi, mentre per i cicli esterni si può aderire a un qualsiasi degli altri modelli. \newline
 Richiede quindi forte interazione tra il committente e il fornitore. Le fasi presenti sono: definizione degli obiettivi, l'analisi dei rischi, sviluppo e validazione, pianificazione per poi riprendere dall'inizio;
 
