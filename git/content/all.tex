@@ -25,7 +25,9 @@
 % =================================================================================================
 % 0.0.9			2015-02-07			collegamento locale remoto e branch in remoto		Tesser Paolo
 % =================================================================================================
-
+% 0.0.10		2015-02-10			descritte le operazioni fect, push e su tags		Tesser Paolo
+% =================================================================================================
+%
 
 \global\let\tikz@ensure@dollar@catcode=\relax % fix verbatim PROBLEM
 
@@ -408,11 +410,33 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 
 	\subsection{Lavorare in remoto} % (fold)
 	\label{sub:lavorare_in_remoto}
-	TO DO (pull, fetch)
+	Per sincronizzarsi con il repository pubblico che di solito risiede su un servizio di hosting remoto, abbiamo diverse operazioni che possiamo effettuare.
+		\begin{itemize}
+			\item per importare i commit un repository remoto in uno locale dobbiamo effettuare la seguente operazione:
+			\begin{verbatim}
+			path: git fetch <remote> # tutti i branch
+			# oppure
+			path: git fetch <remote> <nome_del_branch> # solo dal branch specifico
+			\end{verbatim}
+			I commit saranno salvati come appartenenti a un branch remoto invece di normali branch locali. Questo perché così si ha la possibilità di rivedere i cambiamenti prima di integrarli dentro la copia personale del progetto. Bisognerà ricordarsi poi di effettuare l'operazione di merge. \newline
+			\item TO DO (pull);
 
 
 
-
+			\item per trasmettere i commit dal repository locale a uno remoto. \'E l'operazione inversa di quella di ``fetch'' e viene eseguita usando il comando:
+			\begin{verbatim}
+			path: git push <remote> <branch>
+			\end{verbatim}
+			Questa comando deve essere utilizzato dopo che si sono accumulati un po' di commit in locale, pronti per essere condivisi. Opzionalmente, ma è \textbf{fortemente consigliato} farlo, si possono sistemare attraverso un rebase interattivo e poi pushare. \newline
+			Git, per prevenire una sovrascrizione, non consentirà di eseguire un push se non dovesse avvenire un fast-forward merge. Se il push dovesse fallire, sarebbe allora perché la storia in remoto, diverge da quella in locale. Bisognerà dunque effettuare prima un operazione di pull. L'approccio che si vuole adottare è quindi il seguente:
+			\begin{verbatim}
+			path: git checkout master
+			path: git fecth origin master
+			path: git rebase -i origin/master
+			# some operations of rebasing
+			path: git push origin master
+			\end{verbatim}
+		\end{itemize}
 
 		\subsubsection{Gestione dei branch} % (fold)
 		\label{ssub:gestione_dei_branch_remoto}
@@ -434,10 +458,14 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			\end{itemize}
 			\noindent
 		% subsubsection gestione_dei_branch (end)
-
 		\subsubsection{Gestione dei tag} % (fold)
 		\label{ssub:gestione_dei_tag_remoto}
-		TO DO
+		I tag non vengono pushati automaticamente insieme alle altre cose quando vengono eseguiti gli appositi comandi. Proprio per questo dobbiamo eseguire il comando:
+		\begin{verbatim}
+		path: git push <remote> --tags
+		# oppure
+		path: git push <nome_tag>
+		\end{verbatim}
 		% subsubsection gestione_dei_tag (end)
 
 	% subsection lavorare_in_remoto (end)
