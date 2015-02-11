@@ -27,6 +27,8 @@
 % =================================================================================================
 % 0.0.10		2015-02-10			descritte le operazioni fect, push e su tags		Tesser Paolo
 % =================================================================================================
+% 0.0.11		2015-02-11			descritto rebase interattivo						Tesser Paolo
+% =================================================================================================
 %
 
 \global\let\tikz@ensure@dollar@catcode=\relax % fix verbatim PROBLEM
@@ -380,7 +382,26 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 				path: git pull --rebase
 				\end{verbatim}
 
-				\item \textbf{Rebase --interactive e Merge}: TO DO.
+				\item \textbf{Rebase --interactive e Merge}: lo scopo di eseguire un rebase interattivo è sostanzialmente lo stesso di effettuarne uno normale, con la semplice aggiunta che prima che l'operazione sia compiuta, possiamo eseguire alcuni aggiustamenti a vari commit. Ad esempio: unirli assieme, rimuoverli, cambiarli e riordinarli. \newline
+				Quando si avvierà il comando apposito ci troveremo in un situazione del tipo di quella mostrata di seguito:
+				\begin{verbatim}
+				path: git rebase -i <ref>
+				# verrà aperto una finestra di testo con un seguente elenco:
+				pick d3a7c85 New changes
+				pick b538761 Other changes
+				pick 61be62b Some nice new changes
+				pick e897f7f Update for release 0.9.2
+				pick ca33ef2 Commit that should have been in the release
+				\end{verbatim}
+				Se vogliamo operare delle operazioni su questi commit dobbiamo modificare il comando pick con uno dei seguenti (compreso pick stesso per spiegare ciò che fa):
+					\begin{itemize}
+						\item \textbf{pick} : usa il commit così come é;
+						\item \textbf{reword}: usa il commit, ma cambia il messaggio;
+						\item \textbf{edit}: usa il commit, ma lo ferma per un operazione di amend;
+						\item \textbf{squash}: usa il commit, ma lo fonde con il precedente.
+					\end{itemize}
+					\noindent
+				Si possono sempre lasciare invariati i comandi e spostare solo ordine dei commit.
 
 			\end{enumerate}
 			\noindent
@@ -400,6 +421,12 @@ Per creare un repository su un servizio di hosting basta seguire le istruzione c
 			\end{verbatim}
 			Da notare che i conflitti si verificano solo se avviene un 3-way merge.
 			% paragraph risolvere_i_conflitti (end)
+
+
+		\subsubsection{Salvare i cambiamenti temporaneamente} % (fold)
+		\label{ssub:salvare_i_cambiamenti_temporaneamente}
+		TO DO
+		% subsubsection salvare_i_cambiamenti_temporaneamente (end)
 
 		\subsubsection{Gestione dei tag} % (fold)
 		\label{ssub:gestione_dei_tag_locale}
