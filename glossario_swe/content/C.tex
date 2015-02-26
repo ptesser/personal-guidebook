@@ -11,6 +11,8 @@
 % ====================================================================
 % 0.0.2		2015-02-05		Tesser Paolo	inseriti vocaboli: Configurazione
 % ====================================================================
+% 0.0.3		2015-02-25		Tesser Paolo	inserite voci: CMMI
+% ====================================================================
 %
 
 \section{C}
@@ -27,8 +29,25 @@
 			\item C: Check. Test e controllo, studio e raccolta dei risultati e dei riscontri;
 			\item A: Act. Azione per rendere definitivo e/o migliorare il processo.
 		\end{itemize}
-
 		\item \textbf{Closure}: nei linguaggi di programmazione è una astrazione che combina una funzione con le variabili libere presenti nell'ambiente in cui è definita;
+		\item \textbf{CMMI}: [QP] Capability Maturity Model Integration:
+			\begin{itemize}
+				\item \textbf{Capability}: misura di quanto è adeguato un processo per gli scopi per cui è stato definito. Questa metrica considera un processo singolarmente e ne determina l'intorno del risultato raggiungibile utilizzando quel processo;
+				\item \textbf{Maturity}: misura di quanto è governato il sistema dei processi dell'azienda. Questa metrica considera un insieme di processi, quelli che rispondono al miglioramento continuo dell'organizzazione. Il risultato viene elaborato dall'effetto combinato delle Capability dei processi coinvolti;
+				\item \textbf{Model}: insieme di requisiti via via più stringenti per valutare il percorso di miglioramento dei processi dell'azienda;
+				\item \textbf{Integration}: architettura di integrazione delle diverse discipline e tipologie di attività delle azienda.
+			\end{itemize}
+			\noindent
+		Un processo a basso livello di Capability significa che dipende da chi lo attua, viene definito e seguito in maniera opportunistica e ne è difficile prevedere l'esito. Al contrario, se il livello è alto, vuol dire che il processo viene seguito da tutti in modo disciplinato, sistematico e quantificabile. Attraverso questi valori si ottiene un insieme strutturato di elementi che descrivono le caratteristiche di processi efficaci. Con questo modello viene fornita/o/e una base concettuale su cui appoggiarsi, delle best practice dalla comunità di esperti e utilizzatori, un linguaggio comune e un modo per definire che cosa significa miglioramento nell'organizzazione. \newline
+		Può essere usato anche per confrontare organizzazioni diverse. \newline
+		Vengono perciò definiti 5 livelli di maturità, che si possono scalare applicando attività di management:
+			\begin{enumerate}
+				\item \textbf{Initial}: il processo è imprevedibile e scarsamente controllato, le informazioni vengono acquisite in pull;
+				\item \textbf{Managed}: il processo è principalmente riguardante un progetto, migliora la reattività;
+				\item \textbf{Defined}: il processo è trasversale per l'organizzazione ed è pro-attivo;
+				\item \textbf{Quantitatively Managed}: il processo è misurato e controllato, fornisce informazioni in push;
+				\item \textbf{Optimizing}: l'obiettivo è migliorare il processo già buono.
+			\end{enumerate}
 		\item \textbf{Configurazione}: [AM] un prodotto SW è l'unione di parti distinte, tenute insieme secondo regole precise. Queste regole vanno pianificate e necessitano di essere il più possibile automatizzate attraverso appositi strumenti;
 		\item \textbf{Controllo di versione}: [AM]  è la gestione di versioni multiple di un insieme di informazioni. I documenti che vengono gestiti attraverso questa tecnica sono tutti quelli che hanno o necessitano di avere una storia.\newline
 	Questi strumenti (Git, SVN, Mercurial) ci permettono di muoverci attraverso le varie modifiche che sono state effettuate su file digitali come del codice sorgente, disegni tecnici, documentazione o altro, e, in caso di necessità, ripristinare quelli antecedenti alla versione attuale. \newline
