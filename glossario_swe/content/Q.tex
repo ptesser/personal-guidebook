@@ -28,7 +28,32 @@
 		A volte al fornitore è richiesto che il prodotto rispetti alcune norme, sia a livello di prodotti sia di processi in modo che il cliente sia tutelato rispetto all'uso o al valore dei prodotti. \newline
 		La qualità dovrà essere quindi: esterna, interna ed in uso. Le prime due sono fortemente connesse e riguardano: le funzionalità, l'affidabilità, l'efficienza, l'usabilità, la manutenibilità e la portabilità. Quella interna sarà fonte di requisiti, anche se non espliciti, e la più vasta rispetto alla interna. Deriva infatti da scelte di progettazione codifica, verifica e che si vede solo attraverso una revisione critica. Quella interna si osserva invece tramite esecuzione del prodotto;
 
-		\item \textbf{Qualità architetturali}: [PR][TO DO];
+		\item \textbf{Qualità architetturali}: [PR] esistono molteplici qualità architetturali che devono essere ricercate:
+			\begin{itemize}
+				\item \textbf{Sufficienza}: se è capace a soddisfare tutti i bisogni. So quindi quali requisiti tracciare;
+				\item \textbf{Comprensibilità}: se è comprensibile ai portatori di interesse. In questo caso si fa maggiormente riferimento al Responsabile di progetto, al committente e ai verificatori;
+				\item \textbf{Modularità}: se è divisa in parti chiare e ben distinte. Bisogna suddividere quindi le responsabilità in modo chiaro;
+				\item \textbf{Robustezza}: se è capace di sopportare ingressi diversi, sia che siano giusti, sbagliati, tanti o pochi, da parte dell'utente o dell'ambiente. Non devo quindi fare assunzioni ottimistiche sia interne che esterne;
+				\item \textbf{Flessibilità}: se permette modifiche a costo contenuto al variare dei requisiti;
+				\item \textbf{Riusabilità}: alcune sue parti possono essere utilmente impiegate in altre applicazioni. O parti esterne possono essere usate nel sistema che dobbiamo costruire;
+				\item \textbf{Efficienza}: nel tempo, nello spazio e nelle comunicazioni. Ad esempio un tempo di avvio basso o un basso consumo della CPU;
+				\item \textbf{Affidabilità}: se è molto probabile che funzioni bene quando è utilizzata. Concetto molto legato alla robustezza. \'E avere l'aspettativa che quando chiederò qualcosa, farà quella cosa;
+				\item \textbf{Disponibilità}: se necessita di poco o nessun tempo di manutenzione fuori linea. Si riesci quindi a fare manutenzione senza spegnere il sistema;
+				\item \textbf{Sicurezza rispetto a intrusioni (security)}: se i suoi dati e le sue funzioni non sono vulnerabili a intrusioni;
+				\item \textbf{Sicurezza rispetto a malfunzionamenti (safety)}: se è esente da malfunzionamenti gravi. Questo implica anche che non bisogna perdere i dati su cui l'utente stava lavorando;
+				\item \textbf{Semplicità}: ogni parte contiene solo il necessario e niente di superfluo. Questo ci viene garantito dal tracciamento in avanti e all'indietro. Come principio ispiratore troviamo il \textbf{rasoio di Occam} postulato da William Ockham che dice: non bisogna formulare più ipotesi di quelle che siano strettamente necessarie per spiegare un dato fenomeno quando quelle iniziali siano sufficienti. Viene poi adottato da Isaac Newton e Albert Einstein (Everything should be made as simple as possible, but not simpler);
+				\item \textbf{Incapsulazione (information hiding)}: l'interno delle componenti non è visibile dall'esterno. No aliasing e no variabili globali. Le componenti sono quindi ``black box''. I suoi clienti ne conoscono solo l'interfaccia, che nasconde gli algoritmi e le strutture dati usate all'interno. I benefici che ne derivano sono che non possono essere fatte assunzioni sull'interno. Cresce la manutenibilità e diminuiscono le dipendenza che consento in futuro un maggior riuso;
+				\item \textbf{Coesione}: le parti che stanno insieme hanno gli stessi obiettivi. Quindi tutti quelli che ci sono sono necessari a raggiungere uno scopo e niente di superfluo. Anche questo fattore migliora la manutenibilità e la riusabilità, dando maggiore comprensione del sistema;
+				\item \textbf{Basso accoppiamento}: parti distinte dipendono poco o niente le une dalle altre. \newline
+				L'accoppiamento può essere misurato attraverso due metriche:
+					\begin{itemize}
+						\item Fan-in: indice di utilità che deve essere massimizzato e indica quanto viene usato il componente;
+						\item Fan-out: indice di dipendenza che deve essere minimizzato e indica quanto il componente utilizza altri componenti.
+					\end{itemize}
+					\noindent
+				Una buona progettazione cerca di avere componenti con Fan-in elevato.
+			\end{itemize}
+
 
 	\item \textbf{Quantificabile}: di cui è possibile misurarne l'efficacia e l'efficienza, anche a priori;
 
