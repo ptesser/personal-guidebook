@@ -26,6 +26,10 @@
 			\item \textbf{Meet-in-the-middle}: approccio intermedio, quello più frequentemente utilizzato.
 		\end{itemize}
 
+
+	\item \textbf{Definizione di prodotto}: [DOC] documento che descrive l'architettura di dettaglio del prodotto. Contiene tutto ciò che serve al programmatore per iniziare la codifica. Presenza quindi di diagrammi di flusso correlati a diagrammi di sequenza. Si basa sull'architettura logica e consente lo sviluppo in parallelo dei componenti terminali. \newline
+	In essa vengono decomposti i componenti architetturali in moduli più piccoli. Deve fornire anche i dettagli per la verifica di ciascun modulo;
+
 	\item \textbf{Design Pattern}: [PR] riportano soluzioni a problemi che sono già state sviluppate e che si sono evolute nel corso del tempo in modo tale che il progettista non debba riscoprire ogni volta cose già esistenti. La forma con cui si presentano è succinta e facilmente applicabile. Ci vuole un notevole sforzo ad applicarli, ma ciò viene ripagato dall'incremento nella flessibilità e nella riusabilità della soluzione adottata. \newline
 	I pattern non riguardano solo il mondo dei software, ma svariati campi, come ad esempio quelli per la stesura di novelle romantiche o fiabe. \newline
 	Per quanto riguarda il mondo software vanno inseriti nella Specifica Tecnica, nella Definizione di Prodotto e nel Piano di Qualifica (?). \newline
@@ -74,7 +78,7 @@ L'asse delle ordinate invece è riservata alle mansioni che costituiscono il pro
 Le barre orizzontali rappresentate servono ad indicare la quantità di tempo riservato ad una determinata mansione. Ne deriva quindi un calendario delle attività. \newline
 Questo metodo offre quindi un'idea più chiara sull'andamento del progetto e permette di controllare meglio i budget di risorse e conseguentemente i costi;
 
-	\item \textbf {Diagramma di PERT}: (Programme Evaluation and Review Technique) [PM] è uno degli strumenti di supporto alle attività di pianificazione eseguite dal responsabile di progetto. \newline
+	\item \textbf {Diagramma di PERT}: [PM] (Programme Evaluation and Review Technique) [PM] è uno degli strumenti di supporto alle attività di pianificazione eseguite dal responsabile di progetto. \newline
 Serve per arricchire le informazioni date dal diagramma di Gantt. In esso vengono gestite principalmente le dipendenze tra un'attività e un'altra, andando a segnare il tempo di inizio e quello di fine. Tra le attività correlate si potrà dunque verificare se è presente dello \textbf{Slack}, cioè del tempo di margine in caso l'attività precedente non riesca ad essere eseguita nei tempi prefissati. Bisogna stare attenti a come si gestisce ciò perché molto slack causa inattività e non consente ritardo finale.   \newline
 Questa tecnica, congiunta allo studio del Cammino critico, permette di visualizzare meglio i collegamenti tra le varie attività e consenti di valutare più facilmente i percorsi critici;
 
@@ -82,6 +86,19 @@ Questa tecnica, congiunta allo studio del Cammino critico, permette di visualizz
 	\item \textbf{Disciplinato}: fissato un principio, lo segue sempre senza aggiungere o fare cose che non sono state regolamentate precedentemente da norme di gruppo;
 	\item \textbf{Documentazione}: [AM] riguarda tutto ciò che documenta le attività di un progetto, riguardo al prodotto e al processo.
 	Per essere utile deve sempre essere disponibile, corretta nei contenuti, verificata, approvata e aggiornata. La diffusione di questi documenti deve essere controllata. Ogni documento infatti deve avere una lista di distribuzione, coerente con i suoi scopi, per non generare offuscamento in chi la riceve.
+
+
+	\item \textbf{Documentare}: [DOC] questo tipo attività è da svolgere per diversi motivi:
+		\begin{itemize}
+			\item aiuta a dominare la complessità dei processi produttivi;
+			\item attenua gli effetti della volatilità dei requisiti;
+			\item facilita il controllo di avanzamento, grazie a elementi di controllo e valutazione (sia quantitativi sia qualitativi);
+			\item per rendere le attività più disciplinate, ripetibili e misurabili, in modo da poter attuare lo schema PDCA.
+		\end{itemize}
+		\noindent
+		Bisogna documentare tutte le attività di pianificazione e gestione, sviluppo, verifica e validazione;
+
+
 	\item \textbf{Duck typing}: nei linguaggi di programmazione ad oggetti si riferisce ad uno stile di tipizzazione dinamica dove la semantica di un oggetto è determinata dall'insieme corrente dei suoi metodi e dalla sue proprietà piuttosto che dal fatto di estendere una particolare classe o implementare una specifica interfaccia. \newline
 Alcuni linguaggi a cui si riesce ad applicare bene questo principio sono JavaScript o PHP.
 Il nome si riferisce al duck test attribuito a James Whitcomb Riley il quale si può esporre attraverso la frase: ``Quando vedo un uccello camminare come un'anatra, nuotare come un'anatra e fare il verso come l'anatra, posso chiamare quell'uccello anatra.".
