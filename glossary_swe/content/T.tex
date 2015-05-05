@@ -25,6 +25,28 @@
 		\noindent
 		Infine può essere fatta anche della prototipazione, che può essere interna (per capire meglio le cose) o esterna (per chiedere al cliente se ciò che sta domandando);
 
+		\item \textbf{Test}: [VV][analisi dinamica]
+			\begin{figure}[htbp]
+				\centering
+				\includegraphics[scale=0.5]{img/composizione_test.png}
+				\caption{Composizione Test}
+				\label{fig:comp_test}
+			\end{figure}
+
+			\begin{itemize}
+				\item \textbf{test di unità}: attività di analisi dinamica che se può svolgere con il massimo grado di parallelismo in quanto coinvolge la più piccola parte non ulteriormente scomponibile di un programma. La responsabilità è dello stesso programmatore per le unità più semplici, altrimenti di un verificatore autonomo. Nel primo caso infatti potrebbe esserci conflitto di interesse, meglio quindi peer-programming;
+				\item \textbf{test di integrazione}: servono per verificare la costruzione incrementale del sistema. Può essere in parallelo per i componenti che non collaborano tra di loro. In condizioni ottimali, l'integrazione dovrebbe essere prova di problemi;
+				\item \textbf{test di sistema e collaudo}: i primi sono svolti internamente dal fornitore per accertare la copertura dei requisiti SW, mentre i secondi sono supervisionati dal committente per dimostrare la conformità del prodotto sulla base di casi di prova specificati nel o implicati dal contratto;
+				\item \textbf{test di regressione}: rappresentano l'insieme di test necessari ad accertare che la modifica di una parte P di S non causi errori in P o nelle altre parti di S che dipendono da P. Il rischio che degli errori si verifichino cresce tanto più cresce l'accoppiamento fra le diverse parti e al diminuire dell'accoppiamento.
+
+			\end{itemize}
+
+
+
+
+
+
+
 		\item \textbf{Tracciamento dei requisiti}: [DOC] ha il compito di fissare le relazioni tra i prodotti del processo di sviluppo. Vengono usate delle matrici di tracciabilità. Il tracciamento viene fatto in avanti (forward) che indica la completezza e all'indietro (backward) che indica la necessità. I tracciamenti necessari sono i seguenti:
 			\begin{itemize}
 				\item requisiti utente (capitolato) <-> requisiti software (AdR)

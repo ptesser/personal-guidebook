@@ -39,6 +39,28 @@
 			\item \textbf{Object-oriented}: in questo caso, l'analisi è orientata agli oggetti, ne deriva un uso prevalente di formalismi grafici (Use Case). Questo implica una progettazione bottom-up, basata sul riuso di componenti già esistenti o la realizzazione di componenti riusabili. La programmazione sarà quindi OO.
 		\end{itemize}
 
+	\item \textbf{Analisi dinamica}: [VV] la ripetibilità in maniera deterministica è un requisito essenziale per questo tipo di analisi. Si devono utilizzare alcuni tipi di strumenti:
+		\begin{itemize}
+			\item \textbf{Driver}: componente attiva fittizia che serve a pilotare un parte del programma. (non è ciò che voglio testare)
+			\item \textbf{Stub}: componente passiva fittizia per simulare una parte del programma. \'E un sostituto dell cose che devo guardare che restituisce però sempre la risposta giusta;
+			\item \textbf{Logger}: componente non intrusivo di registrazione dei dati di esecuzione per analisi dei risultati.
+		\end{itemize}
+		\noindent
+		Ci sono due tipi di approccio che utilizzano questi strumenti: \textbf{top-down} e \textbf{bottom-up}. Vediamo partendo dall'illustrazione seguente.
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[scale=0.45]{img/stub_driver.png}
+			\caption{Architettura Documentazione}
+			\label{fig:arch_doc}
+		\end{figure}
+		Se lavoro in maniera \textbf{top-down} assumo che il comportamento delle foglie sia corretto grazie all'utilizzo di stub. Se invece lavoro in maniera \textbf{bottom-up} rimpiazzo la radice con un driver.
+
+
+
+
+		\item \textbf{Analisi statica}: [VV] attività di verifica applicabile anche sui documenti. Non richiede l'esecuzione di parti del sistema SW. Viene applicata a ogni prodotto di processo e non solo al codice. Si può effettuare con metodi di lettura, impiegati solo per prodotti semplici, e metodi formali, basati sulla prova assistita di proprietà;
+
+
 	\item \textbf{Analista}: è uno dei ruoli di gestione di un progetto. Esso ha il compito di capire il problema per ottenere i requisiti. Non da la soluzione e spesso non segue fino in fondo la realizzazione del progetto, ma è presente principalmente nella fase iniziale. \newline
 	Per cercare i requisiti segue un approccio top-down. Parte infatti ad analizzare quelli espliciti del proponente fino a scinderli in vari sottogruppi gerarchici, trovandone nel frattempo anche di impliciti (il numero maggiore tra le due tipologie);
 
