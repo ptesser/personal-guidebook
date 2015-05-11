@@ -62,8 +62,22 @@
 
 
 		\item \textbf{Analisi statica}: [VV] attività di verifica applicabile anche sui documenti. Non richiede l'esecuzione di parti del sistema SW. Viene applicata a ogni prodotto di processo e non solo al codice. Si può effettuare con metodi di lettura, impiegati solo per prodotti semplici, e metodi formali, basati sulla prova assistita di proprietà. Vediamo meglio nel dettaglio la parte che riguarda principalmente l'analisi statica del codice. \newline
-		TODO
-
+		Un numero sempre maggiori di sistemi SW incorpora funzionalità critiche. \'E bene quindi essere in grado di sapere se un sistema è sicuro in maniera \textbf{safety}, cioè il sistema non fa danni, e in maniera \textbf{security}, cioè che sono protetto da intrusi. Il SW deve possedere tutte le capacità funzionali elencate nei requisiti e anche tutte le capacità non funzionali necessarie per garantire che il sistema lavori sempre come previsto, quindi non sul comportamento, ma sul modo in cui lo faccio. Per verificare quindi queste cose bisogna possedere, in maniera dimostrabile, determinata proprietà (di costruzione, d'uso, di funzionamento). \newline
+		Nessun linguaggio di programmazione garantisce a priori la completa verificabilità di ogni programma scritto. Questo implica che scelto un linguaggio e valutati i suoi costrutti, bisogni porre dei vincoli di modi di programmazione nelle norme di progetto. Vediamo ora alcuni tipi di analisi statica:
+			\begin{itemize}
+				\item \textbf{Tracciamento}: serve a dimostrare la completezza ed economicità della soluzione. Questo implica il soddisfacimento di tutti i requisiti garantendo che non siano state create funzionalità superflue ed ingiustificate. Particolari stili di codifica facilitano la verifica mediante tracciamento. Assegnando singoli requisiti elementari a singoli moduli del programma;
+				\item \textbf{Revisioni}: è uno strumento essenziale del processo di verifica. Possono essere condotte sull'analisi, la progettazione, il codice, procedure e risultati di verifica. Queste non sono automatizzabili. Possono essere formali o informali;
+				\item \textbf{Flusso di controllo}: TODO;
+				\item \textbf{Flusso di dati}: TODO;
+				\item \textbf{Flusso dell'informazione}: TODO;
+				\item \textbf{Esecuzione simbolica}: TODO;
+				\item \textbf{Verifica formale del codice}: TODO;
+				\item \textbf{Verifica di limite}: TODO;
+				\item \textbf{Uso dello stack}: TODO;
+				\item \textbf{Comportamento temporale}: TODO;
+				\item \textbf{Interferenza}: TODO;
+				\item \textbf{Codice oggetto}: TODO.
+			\end{itemize}
 
 
 
