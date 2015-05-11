@@ -23,6 +23,11 @@
 			\noindent
 			Alcuni costrutti del linguaggio complicano questa analisi. In particolare possono essere d'ostacolo: la risoluzione dinamica di chiamata (dispatching), la conversione forzata tra tipi (casting) o l'eccezioni predefinite;
 
+		\item \textbf{Failure (malfunzionamento)}: [VV][analisi dinamica] è l'inabilità di un sistema o componente di eseguire le funzioni richieste. Una failure risulta da problemi interni che eventualmente si manifestano in un comportamento esterno del sistema;
+
+		\item \textbf{Fault (guasto)}: [VV][analisi dinamica] rappresenta un passo, un processo o una definizione dei dati incorretta in un programma che causano un \textbf{Error};
+		\item \textbf{Fault tollerance}: [VV][analisi dinamica] è l'abilità di una unità a riuscire a continuare l'esecuzione del programma in presenza di \textbf{Fault} o di \textbf{Error}. Ad esempio il costrutto \textbf{try-catch} deve servire a non far morire l'attività, non limitarsi solo a fare un report della terminazione;
+
 		\item \textbf{Forme di analisi}: [VV] esistono due principali forme di analisi per effettuare la verifica:
 			\begin{itemize}
 				\item \textbf{Analisi statica}: non richiede l'esecuzione di alcuna parte del prodotto SW, viene quindi maggiormente impiegata quando il sistema non è ancora disponibile;
