@@ -59,9 +59,20 @@
 				\item \textbf{Quantitatively Managed}: il processo è misurato e controllato, fornisce informazioni in push;
 				\item \textbf{Optimizing}: l'obiettivo è migliorare il processo già buono.
 			\end{enumerate}
+
+
+		\item \textbf{Comportamento predicibile}: [VV][analisi statica] è necessario avere un codice sorgente senza ambiguità. Ad esempio deve essere sempre lo stesso l'ordine di elaborazione e di inizializzazione. Oppure la modalità di passaggio dei parametri deve essere ben definita (per valore o per riferimento);
+
 		\item \textbf{Configurazione}: [AM] un prodotto SW è l'unione di parti distinte, tenute insieme secondo regole precise. Queste regole vanno pianificate e necessitano di essere il più possibile automatizzate attraverso appositi strumenti;
 		\item \textbf{Controllo di versione}: [AM]  è la gestione di versioni multiple di un insieme di informazioni. I documenti che vengono gestiti attraverso questa tecnica sono tutti quelli che hanno o necessitano di avere una storia.\newline
 	Questi strumenti (Git, SVN, Mercurial) ci permettono di muoverci attraverso le varie modifiche che sono state effettuate su file digitali come del codice sorgente, disegni tecnici, documentazione o altro, e, in caso di necessità, ripristinare quelli antecedenti alla versione attuale. \newline
 	Tutto ciò serve per correggere errori o ritornare a stati in cui non ce ne erano. Ci permette inoltre di procedere su rami diversi in modo da non entrare in conflitto con sezioni stabili dello sviluppo;
 
+		\item \textbf{Criteri di programmazione}: [VV][analisi statica] per rendere più facili le attività di verifica è necessario:
+			\begin{itemize}
+				\item riflettere l'architettura nel codice;
+				\item separare le interfacce dall'implementazione;
+				\item massimizzare l'incapsulazione (information hiding);
+				\item usare tipi specializzati per specificare dati. 
+			\end{itemize}
 	\end{itemize}

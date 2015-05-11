@@ -67,16 +67,16 @@
 			\begin{itemize}
 				\item \textbf{Tracciamento}: serve a dimostrare la completezza ed economicità della soluzione. Questo implica il soddisfacimento di tutti i requisiti garantendo che non siano state create funzionalità superflue ed ingiustificate. Particolari stili di codifica facilitano la verifica mediante tracciamento. Assegnando singoli requisiti elementari a singoli moduli del programma;
 				\item \textbf{Revisioni}: è uno strumento essenziale del processo di verifica. Possono essere condotte sull'analisi, la progettazione, il codice, procedure e risultati di verifica. Queste non sono automatizzabili. Possono essere formali o informali;
-				\item \textbf{Flusso di controllo}: TODO;
-				\item \textbf{Flusso di dati}: TODO;
-				\item \textbf{Flusso dell'informazione}: TODO;
-				\item \textbf{Esecuzione simbolica}: TODO;
-				\item \textbf{Verifica formale del codice}: TODO;
-				\item \textbf{Verifica di limite}: TODO;
-				\item \textbf{Uso dello stack}: TODO;
+				\item \textbf{Flusso di controllo}: serve ad accertare che il codice esegua nella sequenza specificata (si parte dal main). Accerta che il codice sia ben strutturato, localizza codice non raggiungibile e identifica segmenti d'esecuzione che possono non terminare. Il flusso di controllo viene analizzato osservando il \textbf{program counter}, se ad esempio viene incrementato o ricade in un posto mai testato non saprò se posso uscire;
+				\item \textbf{Flusso di dati}: serve ad accertare che nessuno cammino d'esecuzione del programma acceda a variabili prive di valore. \'E un attività complicata dalla presenza e dall'uso di dati globali raggiungibili da ogni parte del programma. Buona pratica è quindi inizializzare subito ed in un unico posto tutte le variabili che si andranno ad usare;
+				\item \textbf{Flusso dell'informazione}: serve a determinare quali dipendenze esistono tra ingressi e uscite di una unità di codice. Le sole dipendenze consentite sono quelle previste dalla specifica;
+				\item \textbf{Esecuzione simbolica}: serve a verificare proprietà del programma mediante manipolazione algebrica del codice sorgente;
+				\item \textbf{Verifica formale del codice}: (non troppo richiesta) serve a provare la correttezza del codice sorgente rispetto alla specifica algebrica dei requisiti. La correttezza viene espressa tramite \textbf{pre e post condizioni} con condizioni intermedie di verifica espresse sotto forma di teoremi;
+				\item \textbf{Verifica di limite}: serve a verificare che i dati del programma restino entro i limiti del loro tipo e della precisione desiderata. Per far ciò si si possono fare analisi di overflow e underflow, analisi di errori di arrotondamento, rispetto dei limiti e analisi di limite di strutture. Alcuni linguaggi evoluti assegnano limiti statici a tipi discreti consentendo verifiche automatiche sulle corrispettive variabili;
+				\item \textbf{Uso dello stack}: serve a determinare la massima domanda di stack richiesta da un'esecuzione in relazione con la dimensione dell'area di memoria assegnata al processo. Bisogna quindi imporre vincoli di programmazione in modo che non ci sia collisione tra lo stack e lo heap per qualche esecuzione;
 				\item \textbf{Comportamento temporale}: TODO;
-				\item \textbf{Interferenza}: TODO;
-				\item \textbf{Codice oggetto}: TODO.
+				\item \textbf{Interferenza}: serve a mostrare l'assenza di effetti di interferenza tra parti separate del sistema. Un esempio di questo fenomeno è il \textbf{memory leak}, ovvero quando parti separate di programma lasciano traccia di dati abbandonati nello heap;
+				\item \textbf{Codice oggetto}: serve ad assicurare che il codice oggetto da eseguire sia una traduzione corretta del codice sorgente corrispondente e che nessun errore od omissione siano stati introdotti dal compilatorie. Viene ancor effettuato manualmente e può essere facilitato inserendo il tracciamento dei requisiti anche nel codice oggetto.
 			\end{itemize}
 
 
@@ -84,6 +84,8 @@
 
 	\item \textbf{Analista}: è uno dei ruoli di gestione di un progetto. Esso ha il compito di capire il problema per ottenere i requisiti. Non da la soluzione e spesso non segue fino in fondo la realizzazione del progetto, ma è presente principalmente nella fase iniziale. \newline
 	Per cercare i requisiti segue un approccio top-down. Parte infatti ad analizzare quelli espliciti del proponente fino a scinderli in vari sottogruppi gerarchici, trovandone nel frattempo anche di impliciti (il numero maggiore tra le due tipologie);
+
+	\item \textbf{Analizzabilità del sistema}: [VV][analisi statica] l'analisi statica costruisce modelli astratti del SW in esame. Questi modelli rappresentano ogni programma come un grafo diretto e ne studiano i cammini possibili. Le transizioni tra stati (archi) hanno etichette che descrivono proprietà sintattiche e semantiche dell'istruzione corrispondente. Ciascun flusso di controllo (thread) viene rappresentato e analizzato separatamente;
 
 	\item \textbf{Anamnesi}: nella filosofia platonica è quel processo di reminiscenza che, stimolato dalla percezione degli oggetti sensibili, conduce l'uomo a riscoprire gradualmente nel proprio intelletto (attraverso la conoscenza intellettiva) quelle idee eterne che sono causa e origine del mondo fenomenico. La conoscenza sensibile, distinta dalla conoscenza intellettiva, può dunque offrire a quest'ultima lo spunto per avviare un tale processo;
 
