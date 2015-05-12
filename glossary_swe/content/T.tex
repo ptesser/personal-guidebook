@@ -25,6 +25,10 @@
 		\noindent
 		Infine può essere fatta anche della prototipazione, che può essere interna (per capire meglio le cose) o esterna (per chiedere al cliente se ciò che sta domandando);
 
+		\item \textbf{Teorema di Dijkstra (1969)}: [VV][analisi dinamica] il test di un programma può rilevare la presenza di malfunzionamenti, ma non dimostrarne l'assenza;
+
+		\item \textbf{Teorema di Howden (1975)}: [VV][analisi dinamica] non esiste un algoritmo che, dato un programma P qualsiasi, generi per esso un test finito ideale;
+
 		\item \textbf{Test}: [VV][analisi dinamica]
 			\begin{figure}[htbp]
 				\centering
@@ -34,9 +38,16 @@
 			\end{figure}
 
 			\begin{itemize}
-				\item \textbf{test di unità}: attività di analisi dinamica che se può svolgere con il massimo grado di parallelismo in quanto coinvolge la più piccola parte non ulteriormente scomponibile di un programma. La responsabilità è dello stesso programmatore per le unità più semplici, altrimenti di un verificatore autonomo. Nel primo caso infatti potrebbe esserci conflitto di interesse, meglio quindi peer-programming;
-				\item \textbf{test di integrazione}: servono per verificare la costruzione incrementale del sistema. Può essere in parallelo per i componenti che non collaborano tra di loro. In condizioni ottimali, l'integrazione dovrebbe essere prova di problemi;
-				\item \textbf{test di sistema e collaudo}: i primi sono svolti internamente dal fornitore per accertare la copertura dei requisiti SW, mentre i secondi sono supervisionati dal committente per dimostrare la conformità del prodotto sulla base di casi di prova specificati nel o implicati dal contratto;
+				\item \textbf{test di unità}: attività di analisi dinamica che si può svolgere con il massimo grado di parallelismo in quanto coinvolge la più piccola parte non ulteriormente scomponibile di un programma. La responsabilità è dello stesso programmatore per le unità più semplici, altrimenti di un verificatore autonomo. Nel primo caso infatti potrebbe esserci conflitto di interesse, meglio quindi peer-programming. Sono i test più costosi. Unità e moduli vengono determinati durante la progettazione di dettaglio e conseguentemente anche il piano di test. La TU è completa quando ha verificato tutte le unità. Piuttosto di tagliare i test di unità, è meglio che il Responsabile di Progetto, tagli i requisiti opzionali. Possono essere di due tipi:
+					\begin{itemize}
+						\item \textbf{test funzionale (black-box)}: guarda solo l'uscita. Da solo non può accertare correttezza e completezza della logica interna dell'unità. Va quindi necessariamente integrato con test strutturali. Fa riferimento alla specifica dell'unità e utilizza dati di ingresso capaci di provocare l'esito atteso. Si usano delle le classi di equivalenza per non avere infiniti valori di ingresso;
+						\item \textbf{test strutturale (white-box)}: verifica la logica interna del codice dell'unità cercando massima copertura. Ciascuna prova deve essere progettata per attivare ogni cammino di esecuzione all'interno del modulo. Ciascuno insieme di dati di ingresso che attivano un percorso costituiscono un caso di prova.
+					\end{itemize}
+
+				\item \textbf{test di integrazione}: servono per verificare la costruzione incrementale del sistema. Può essere in parallelo per i componenti che non collaborano tra di loro. In condizioni ottimali, l'integrazione dovrebbe essere prova di problemi. Viene applicata alla componenti specificate nella progettazione architetturale. La loro integrazione costituisce il sistema completo. I problemi che si rilevano durante questi test manifestano difetti di progettazione o insufficiente qualità nei test di unità. Si inizia a integrare la componente che ha meno dipendenze.
+
+				\item \textbf{test di sistema e collaudo}: i primi sono svolti internamente dal fornitore per accertare la copertura dei requisiti SW, mentre i secondi sono supervisionati dal committente per dimostrare la conformità del prodotto sulla base di casi di prova specificati nel o implicati dal contratto. I primi sono di tipo funzionale (black-box) in quanto non dovrebbero richiedere conoscenza della logica interna del software.
+
 				\item \textbf{test di regressione}: rappresentano l'insieme di test necessari ad accertare che la modifica di una parte P di S non causi errori in P o nelle altre parti di S che dipendono da P. Il rischio che degli errori si verifichino cresce tanto più cresce l'accoppiamento fra le diverse parti e al diminuire dell'accoppiamento.
 
 			\end{itemize}

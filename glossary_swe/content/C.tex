@@ -29,6 +29,14 @@
 			\item C: Check. Test e controllo, studio e raccolta dei risultati e dei riscontri;
 			\item A: Act. Azione per rendere definitivo e/o migliorare il processo.
 		\end{itemize}
+
+		\item \textbf{Classi di equivalenza}: [VV][analisi dinamica] servono per raggruppare in astratto valori che per ogni test sono indistinguibili, quindi si può prendere come valore uno solo all'interno della classe per effettuare il test. Ogni categoria di valori è una classe di equivalenza. Ne esistono generalmente 3:
+			\begin{enumerate}
+				\item valori nominali interni al dominio
+				\item valori legali di limite
+				\item valori illegali
+			\end{enumerate}
+
 		\item \textbf{Classificazione e gestione dei requisiti}: [IS] Per effettuare una ricerca dei requisiti, bisogna procedere in maniera top-down. Quando vengono trovati, l'analista deve anche sapere dire come vengono verificati non ad un elevato costo. A seconda del tipo di requisito possono essere attuate diverse metodologie per verificarli.
 			\begin{itemize}
 				\item \textbf{Funzionali}: attraverso test, dimostrazione formale o revisione;
@@ -60,13 +68,17 @@
 				\item \textbf{Optimizing}: l'obiettivo è migliorare il processo già buono.
 			\end{enumerate}
 
+				\item \textbf{Configurazione}: [AM] un prodotto SW è l'unione di parti distinte, tenute insieme secondo regole precise. Queste regole vanno pianificate e necessitano di essere il più possibile automatizzate attraverso appositi strumenti;
+
+				\item \textbf{Controllo di versione}: [AM]  è la gestione di versioni multiple di un insieme di informazioni. I documenti che vengono gestiti attraverso questa tecnica sono tutti quelli che hanno o necessitano di avere una storia.\newline
+			Questi strumenti (Git, SVN, Mercurial) ci permettono di muoverci attraverso le varie modifiche che sono state effettuate su file digitali come del codice sorgente, disegni tecnici, documentazione o altro, e, in caso di necessità, ripristinare quelli antecedenti alla versione attuale. \newline
+			Tutto ciò serve per correggere errori o ritornare a stati in cui non ce ne erano. Ci permette inoltre di procedere su rami diversi in modo da non entrare in conflitto con sezioni stabili dello sviluppo;
 
 		\item \textbf{Comportamento predicibile}: [VV][analisi statica] è necessario avere un codice sorgente senza ambiguità. Ad esempio deve essere sempre lo stesso l'ordine di elaborazione e di inizializzazione. Oppure la modalità di passaggio dei parametri deve essere ben definita (per valore o per riferimento);
 
-		\item \textbf{Configurazione}: [AM] un prodotto SW è l'unione di parti distinte, tenute insieme secondo regole precise. Queste regole vanno pianificate e necessitano di essere il più possibile automatizzate attraverso appositi strumenti;
-		\item \textbf{Controllo di versione}: [AM]  è la gestione di versioni multiple di un insieme di informazioni. I documenti che vengono gestiti attraverso questa tecnica sono tutti quelli che hanno o necessitano di avere una storia.\newline
-	Questi strumenti (Git, SVN, Mercurial) ci permettono di muoverci attraverso le varie modifiche che sono state effettuate su file digitali come del codice sorgente, disegni tecnici, documentazione o altro, e, in caso di necessità, ripristinare quelli antecedenti alla versione attuale. \newline
-	Tutto ciò serve per correggere errori o ritornare a stati in cui non ce ne erano. Ci permette inoltre di procedere su rami diversi in modo da non entrare in conflitto con sezioni stabili dello sviluppo;
+		\item \textbf{Copertura (coverage)}: [VV][analisi dinamica] per ogni test di deve definire l'oggetto, la strategia, le risorse necessarie e il piano di esecuzione. Si ha \textbf{Statement Coverage} al 100 per 100 quando i test effettuati sull'unità sono sufficienti a eseguire almeno una volta tutte le linee di comando di ciascuno dei moduli dell'unità, ciò significa che dovrei fare tanti test quanti sono gli statement, ciò implica che se fisso delle norme per limitare il livello di annidamento consentito, diminuisco anche i test da fare. Si ha invece \textbf{Branch Coverage} al 100 per 100 quando ciascuno ramo del flusso di controllo viene attraversato almeno una volta. \newline
+		La statement coverage è meno potente della branch coverage, perché può non tenere conto di alcune condizioni che escludono l'esecuzione di certe parti del codice, in quanto a lei basta percorrerne il più possibile. A volte però neanche la branch coverage è sufficiente, serve quindi utilizzare la \textbf{condition coverage}. Al crescere del numero di condizioni all'interno di una decisione, il numero di test necessario a massimizzare quest'ultima cresce in maniera proibitiva. Il DO-178B richiede allora di massimizzare il \textbf{modified decision condition coverage}, quest'ultimo implica la branche coverage. In pratica è richiesto che tutte le decisioni siano soggette a test e tutti i loro possibili esiti siano effettivamente prodotti;
+
 
 		\item \textbf{Criteri di programmazione}: [VV][analisi statica] per rendere più facili le attività di verifica è necessario:
 			\begin{itemize}
@@ -75,4 +87,7 @@
 				\item massimizzare l'incapsulazione (information hiding);
 				\item usare tipi specializzati per specificare dati. 
 			\end{itemize}
+
+		\item \textbf{Criteri guida}: [VV][analisi dinamica] ci sono alcuni fattori che vanno definiti quali l'\textbf{oggetto della prova}, e in base a quello avrò tipi diversi di test (sistema nel suo complesso, parti di esso o singole unità) e l'\textbf{obiettivo della prova} che sarà definito nel PdQ. Un altro principio da seguire è quello che devo eseguire dei test con l'intento di trovare errori possibili, adottando quindi un atteggiamento utile e non transigente. La provabilità del software va assicurata a monte dello sviluppo e non a valle di esso. Una singola prova non basta. Le prove quindi devono essere ripetibili, esse possono rilevare malfunzionamenti, ma non garantirne l'assenza.
+
 	\end{itemize}

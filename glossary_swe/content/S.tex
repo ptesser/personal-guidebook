@@ -91,7 +91,12 @@
 			\item \textbf{Ready}: la documentazione per l'utente è pronta e gli stakeholder hanno accettato il prodotto e vogliono che diventi operativo.
 
 
-
+	\item \textbf{Strategie di integrazione}: [VV][analisi dinamica] le attività devono essere pianificate all'indietro per lasciare spazio alle verifiche. Nel repository entreranno solo cose verificate. Ad esempio possono avere degli \textbf{hooks} che mi avviano i test prima che possa fare una commit o un push, e se falliscono non mi permettono di portare a termine le operazioni. Alcune strategie di integrazione sono:
+		\begin{itemize}
+			\item \textbf{assemblare parti in modo incrementale}: in questo modo i difetti rilevati in un test sono più probabilmente da attribuirsi alla parte ultima aggiunta;
+			\item \textbf{assemblare produttori prima dei consumatori}
+			\item \textbf{assemblare in modo che ogni passo di integrazione sia reversibile}: in questo modo è possibile retrocedere verso uno stato noto e sicuro.
+		\end{itemize}
 
 		\end{itemize}
 	\item \textbf{Strumenti di valutazione}: [QP] di seguito vengono elencati alcuni strumenti e riferimenti per la valutazione e il miglioramento dei processi. Verranno poi descritti in apposite voci riportanti lo stesso nome presente nella suddetta lista.

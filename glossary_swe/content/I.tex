@@ -42,6 +42,12 @@
 
 	\item \textbf{Inspection}: [VV][analisi statica] il suo obiettivo è quello di rilevare la presenza di difetti eseguendo una lettura mirata del codice. Ciò che è consigliato fare è quindi focalizzare la ricerca su dei presupposti (lista di controllo) da seguire quando si è alla ricerca dei possibili errori;
 
+	\item \textbf{Integrazione incrementale}: [VV][analisi dinamica] può essere effettuata in maniera:
+		\begin{itemize}
+			\item \textbf{Bottom-up}: si sviluppano e si integrano prima le parti con minore dipendenza funzionale e maggiore utilità, risalendo poi l'albero delle dipendenze. Questa strategia riduce il numero di stub necessari al test, ma porta più tardi alla disponibilità di funzionalità di alto livello e quindi a una visione ritardata del prodotto verso il proponente;
+			\item \textbf{Top-down}: si sviluppano prima le parti più esterne, quelle poste sulle foglie dell'albero delle dipendenze e poi si scende. Questa strategia comporta l'uso di molti stub, ma integra a partire dalle funzionalità a più alto livello rendendo possibile in breve tempo la visione del prodotto. Viene attuata generalmente quando si usano architetture molto separate.
+		\end{itemize}
+
 	\item \textbf{Iterazione}: procedere in questo modo significa operare raffinamenti o rivisitazioni. A differenza della tecnica incrementale, questa può essere distruttiva. \newline
 Devo inoltre fissare un numero preciso di iterazioni da compiere e per farlo ha bisogno di condizioni di uscita forti dal ciclo;
 
