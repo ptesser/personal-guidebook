@@ -16,6 +16,21 @@
 \section{R}
 
 \begin{itemize}
+
+	\item \textbf{Raccomandazioni (DO-248)}: [PROG] bisogna cercare di evitare il non-determinismo indesiderabile come ad esempio la risoluzione dinamica di chiamata o l'allocazione e la deallocazione di memoria. Bisogna inoltre evitare la complessità cercando di tenere massima la coesione ed avere minimo accoppiamento sui dati e sul controllo. Avere programmi con un solo punto di ingresso e uno solo di uscita. Il non-determinismo ci può essere se so quali sono le parti che lo rendono tali. Bisogna stare attenti all'\textbf{overriding}. Di seguito sono elencante 10 regole d'ore prese dal libro \textbf{The Power of 10: Rules for developing safety-critical code}:
+		\begin{enumerate}
+			\item usare costrutti di controllo di flusso i più semplici possibile. Questo garantisce possibilità di più facile analisi statica e dinamica del codice, rendendolo più manutenibile. Implicazione è che bisogna cercare di evitare la ricorsione;
+			\item usare le iterazione con limite superiore statico. In questo modo sappiamo sempre dire dove sarà il controllo;
+			\item non usare allocazione dinamica di memoria dopo l'inizializzazione;
+			\item limitare la lunghezza di ogni singolo sottoprogramma a 60 linee di codice;
+			\item puntare a un uso intensivo di asserzioni che cercano di prevenire l'insorgere di situazioni anomale;
+			\item puntare al massimo livello architetturale di data hiding;
+			\item controllare che tutti i parametri in ingresso e uscita siano validi. Il controllo sui parametri in ingresso lo fa il chiamato, mentre per quelli di ritorno se ne occuperà il chiamante;
+			\item limitare al massimo la compilazione condizionale;
+			\item limitare al massimo l'uso dei puntatori e il livello di dereferenziazione che rende il programma intrattabile per l'analisi;
+			\item il codice va compilato da subito usando il compilatore nel modo più restrittivo, adottando la regola \textbf{zero warnings} e meccanismi di \textbf{continuous integration}.
+		\end{enumerate}
+
 	\item \textbf{Requisito}: [IR] possono essere espliciti o impliciti. Secondo IEEE, è la condizione necessaria a un utente per risolvere un problema o raggiungere un obiettivo (visione dal lato del bisogno). \'E inoltre la condizione che deve essere soddisfatta o posseduta da un sistema per adempiere a un obbligo (visione dal lato della soluzione). \newline
 	Il requisito è dunque necessario per: capire la domanda e capire la risposta;
 
