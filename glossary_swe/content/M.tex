@@ -35,11 +35,37 @@ I componenti sono:
 		\item Node.js : una piattaforma software per gestire servizi web scalabili.
 	\end{itemize}
 
-	\item \textbf{Metrica di progetto (Metrics)}: [MM] sistema di misurazione composto da valori e metodi per valutarli in maniera oggettiva. TODO
+	\item \textbf{Metrica di progetto (Metrics)}: [MM] sistema di misurazione composto da valori e metodi per valutarli in maniera oggettiva. Le qualità che una metrica deve avere sono:
+		\begin{itemize}
+			\item \textbf{precisione}: in termini di esattezza e di ripetibilità rispetto ai valori prodotti;
+			\item \textbf{aderenza alla realtà}: se la misura corrisponde all'evidenza sperimentale;
+			\item \textbf{accuratezza}: corrispondenza con la percezione o la realtà effettiva.
+		\end{itemize}
 
 	\item \textbf{Metriche Software}: [QS] sono quei valori che permettono a un prodotto o a un processo di essere quantificabile. Come ad esempio il calcolo dello SLOC (source line of code) per un programma. Esse servono a stimare caratteristiche di un'entità. Vengono identificate da attributi, determinando indicatori per le caratteristiche non misurabili. Secondo il glossario SWE di IEEE la metrica è una misura quantitativa del grado di possesso di uno specifico attributo da parte di un sistema, componente, processo. \newline
 	Nella produzione sono strumenti di valutazione e controllo.
 
+	\item \textbf{Metriche Software}: [MM] il software è molto difficile da misurare a causa delle sue caratteristiche molto multiformi. Possiamo classificare alcune metriche basate: sulla grandezza del prodotto, delle sue funzionalità e del suo comportamento. Vediamo ora alcune metriche:
+		\begin{itemize}
+			\item \textbf{SLOC}: è la metrica più facile e usata, sta ad indicare il numero di linee di codice per file, quantificando anche il rapporto tra commenti e codice vero;
+			\item \textbf{Complessità ciclomatica}: è una metrica indipendente dal linguaggio di programmazione e valuta la complessità del flusso di controllo. \'E molto difficile però calcolarla a priori durante la progettazione e consente nel numero  di casi di prova necessari per verificare ogni possibile esito di ogni ramo di decisione della procedura. TODO
+
+
+			\item \textbf{Function point}: TODO (vedere slide professore)
+
+		\end{itemize}
+		\noindent
+		Nonostante queste possiamo trovare altre metriche più opportune al un software object oriented come:
+		\begin{itemize}
+			\item metriche per le classi
+			\item metriche per i metodi
+			\item metriche per i sistemi
+		\end{itemize}
+
+
+	\item \textbf{Metriche per le classi}: [MM] TODO (vedere slide professore)
+
+	\item \textbf{Metriche per i metodi}: [MM] TODO (vedere slide professore)
 
 
 	\item \textbf{Milestone}: [PM] TODO;
@@ -68,7 +94,19 @@ I componenti sono:
 				\item If you cannot mesure it, you cannot improve it. (Lord William Thomson Kelvin)
 				\item You can't control what you can't mesure. (Tom de Marco)
 			\end{itemize}
-
+			\noindent
+			Capire cosa misurare non è semplice, bisogna partire cercando tra alcune fonti come ``Practical Software Measurement''. Il CMMI suggerisce alcune aree su cui determinare questi valori:
+				\begin{itemize}
+					\item gestione dei requisiti
+					\item progettazione e implementazione
+					\item verifica e validazione
+					\item controllo di qualità
+					\item gestione delle correzioni
+					\item gestione di progetto
+					\item analisi dei rischi e delle decisioni
+				\end{itemize}
+				\noindent
+				Alcuni esempi proposti dal CMMI: quanto le pratiche in uso aderiscono a quelli di riferimento o quanto i prodotti del progetto soddisfano i requisiti. Quali rischi gravano attualmente e quanto. Quanto sono affidabili i preventivi rispetto ai consuntivi;
 
 	\item \textbf{Modelli agili}: [PM] è uno dei modelli di ciclo di vita del SW. \newline
 Nell'idea pura della metodologia agile viene perso il legame con l'ingegneria del software.
