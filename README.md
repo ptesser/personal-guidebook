@@ -1,5 +1,10 @@
 # Guidebook
 
+## Note
+This repository is not yet supported
+
+Last update: 18 May 2015
+
 ## Purpouse of repository
 
 This repository has been created to manage versioning of personal guidebooks written for the study.
